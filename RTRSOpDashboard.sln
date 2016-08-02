@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTRSOpDashboard.WebService.Tests", "UnitTests\RTRSOpDashboard.WebService.Tests\RTRSOpDashboard.WebService.Tests.csproj", "{0DE20573-9091-4E81-A481-C6660CCC3F7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartTest", "ChartTest\ChartTest.csproj", "{63999817-4704-4098-8B3F-E591483AA0E7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MQMetricsStager", "MQMetricsStager\MQMetricsStager.csproj", "{C887E523-1AEE-49B4-829D-29512760BF45}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTRSOpDashboard.DataModel", "RTRSOpDashboard.DataModel\RTRSOpDashboard.DataModel.csproj", "{93260224-3568-4E23-8EA3-C493466CF8AE}"
@@ -45,10 +43,6 @@ Global
 		{0DE20573-9091-4E81-A481-C6660CCC3F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DE20573-9091-4E81-A481-C6660CCC3F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DE20573-9091-4E81-A481-C6660CCC3F7F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{63999817-4704-4098-8B3F-E591483AA0E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{63999817-4704-4098-8B3F-E591483AA0E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{63999817-4704-4098-8B3F-E591483AA0E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{63999817-4704-4098-8B3F-E591483AA0E7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C887E523-1AEE-49B4-829D-29512760BF45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C887E523-1AEE-49B4-829D-29512760BF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C887E523-1AEE-49B4-829D-29512760BF45}.Release|Any CPU.ActiveCfg = Release|Any CPU

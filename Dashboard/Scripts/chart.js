@@ -38,12 +38,31 @@
 
                     var chart;
                     switch (workFlowId) {
+                        case 0:
+                            chart = $('#dqer').highcharts();
+                            break;
                         case 1:
-                            chart = $('#container').highcharts();
+                            chart = $('#a12').highcharts();
+                            break;
+                        case 2:
+                            chart = $('#csm').highcharts();
+                            break;
+                        case 3:
+                            chart = $('#responder').highcharts();
+                            break;
+                        case 4:
+                            chart = $('#processor').highcharts();
                             break;
                         case 5:
-                            chart = $('#container_1').highcharts();
+                            chart = $('#parser').highcharts();
                             break;
+                        case 6:
+                            chart = $('#matcher').highcharts();
+                            break;
+                        case 8:
+                            chart = $('#disseminator').highcharts();
+                            break;
+
                     }
                     //var chart = $('#container').highcharts();
                     var series = chart.series[0];
@@ -54,10 +73,10 @@
                     chart.series[0].addPoint([x, y], true, shift);
 
 
-                    // call it again after one second
+                    // call it again after polling interval in seconds
                     setTimeout(function () {
                         requestData(currentTime.add(pollingIntervalInSeconds, 'seconds'), workFlowId);
-                    }, 5000);
+                    }, pollingIntervalInSeconds * 1000);
                    
                 },
                 cache: false
@@ -65,7 +84,91 @@
         }
 
 
-        $('#container').highcharts({
+        $('#dqer').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                //renderTo: 'container',
+                events: {
+                    load: function () {
+                        requestData(moment('2016-06-29 10:00:00'), 0);
+                    }
+                }
+            },
+            title: {
+                text: 'DQer'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150,
+                minRange: pollingIntervalInSeconds * nonShiftPoints * 1000
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: 'DQer',
+                data: []
+            }]
+        });
+
+        $('#parser').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                //renderTo: 'container',
+                events: {
+                    load: function () {
+                        requestData(moment('2016-06-29 10:00:00'), 5);
+                    }
+                }
+            },
+            title: {
+                text: 'Parser'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150,
+                minRange: pollingIntervalInSeconds * nonShiftPoints * 1000
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: 'Parser',
+                data: []
+            }]
+        });
+
+        $('#a12').highcharts({
             chart: {
                 type: 'spline',
                 animation: Highcharts.svg, // don't animate in old IE
@@ -87,7 +190,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Output'
+                    text: ''
                 },
                 plotLines: [{
                     value: 0,
@@ -107,20 +210,20 @@
             }]
         });
 
-        $('#container_1').highcharts({
+        $('#csm').highcharts({
             chart: {
                 type: 'spline',
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
-                //renderTo: 'container_1',
+                //renderTo: 'container',
                 events: {
                     load: function () {
-                        requestData(moment('2016-06-29 10:00:00'), 5);
+                        requestData(moment('2016-06-29 10:00:00'), 2);
                     }
                 }
             },
             title: {
-                text: 'Parser'
+                text: 'CSM Getter'
             },
             xAxis: {
                 type: 'datetime',
@@ -129,7 +232,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Output'
+                    text: ''
                 },
                 plotLines: [{
                     value: 0,
@@ -144,7 +247,175 @@
                 enabled: false
             },
             series: [{
-                name: 'Parser',
+                name: 'CSM Getter',
+                data: []
+            }]
+        });
+
+        $('#matcher').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                //renderTo: 'container_1',
+                events: {
+                    load: function () {
+                        requestData(moment('2016-06-29 10:00:00'), 6);
+                    }
+                }
+            },
+            title: {
+                text: 'Matcher'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150,
+                minRange: pollingIntervalInSeconds * nonShiftPoints * 1000
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: 'Matcher',
+                data: []
+            }]
+        });
+
+        $('#processor').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                //renderTo: 'container_1',
+                events: {
+                    load: function () {
+                        requestData(moment('2016-06-29 10:00:00'), 4);
+                    }
+                }
+            },
+            title: {
+                text: 'Processor'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150,
+                minRange: pollingIntervalInSeconds * nonShiftPoints * 1000
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: 'Processor',
+                data: []
+            }]
+        });
+
+        $('#responder').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                //renderTo: 'container_1',
+                events: {
+                    load: function () {
+                        requestData(moment('2016-06-29 10:00:00'), 3);
+                    }
+                }
+            },
+            title: {
+                text: 'Responder'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150,
+                minRange: pollingIntervalInSeconds * nonShiftPoints * 1000
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: 'Responder',
+                data: []
+            }]
+        });
+
+        $('#disseminator').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                //renderTo: 'container_1',
+                events: {
+                    load: function () {
+                        requestData(moment('2016-06-29 10:00:00'), 8);
+                    }
+                }
+            },
+            title: {
+                text: 'Disseminator'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150,
+                minRange: pollingIntervalInSeconds * nonShiftPoints * 1000
+            },
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: 'Disseminator',
                 data: []
             }]
         });
