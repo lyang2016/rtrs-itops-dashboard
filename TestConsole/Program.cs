@@ -7,6 +7,7 @@ using RTRSCommon;
 using RTRSOpDashboard.WebService.Domain;
 using WorkflowMetricsStager;
 using IBM.WMQ;
+using WorkflowMetricsStager.Domain;
 
 namespace TestConsole
 {
@@ -23,6 +24,11 @@ namespace TestConsole
             //var mockMetricsDao = new MockMetricsDao();
             //mockMetricsDao.GetMetricsDataFromLastInterval();
 
+            var workflowStager = new StagerDao();
+            var list = workflowStager.GetSystemMetricsDataFromWorkflow("D4", DateTime.Parse("2016-07-19 14:30:00"),
+                DateTime.Parse("2016-07-19 14:31:00"));
+
+            /*
             var mqSetting = new MqConfig().GetSettings("dq_");
 
             using (var mqConnection = new MqConnection(mqSetting))
@@ -40,7 +46,7 @@ namespace TestConsole
                 Console.WriteLine("Current Length = {0}", currentLength);
 
             }
-
+            */
 
             Console.ReadLine();
         }

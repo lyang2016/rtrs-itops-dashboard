@@ -27,8 +27,8 @@ namespace WorkflowMetricsStager.Domain
 
         public void Run()
         {
-            var metricsList = _dao.GetSystemMetricsData();
-            _dao.InsertSystemMetricsData(metricsList);
+            //var metricsList = _dao.GetSystemMetricsData();
+            //_dao.InsertSystemMetricsData(metricsList);
         }
     }
 }

@@ -74,6 +74,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RTRSOpDashboard.DataModel\RTRSOpDashboard.DataModel.csproj">
+      <Project>{93260224-3568-4e23-8ea3-c493466cf8ae}</Project>
+      <Name>RTRSOpDashboard.DataModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RTRSOpDashboard.WebService\RTRSOpDashboard.WebService.csproj">
       <Project>{0e91e6f8-fe59-4f57-a837-a99e9dd12952}</Project>
       <Name>RTRSOpDashboard.WebService</Name>
