@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
 using RTRSCommon;
+using RTRSOpDashboard.DataModel;
 using RTRSOpDashboard.WebService.Domain;
-using RTRSOpDashboard.WebService.Models;
 
 namespace RTRSOpDashboard.WebService.Controllers
 {
@@ -30,7 +28,7 @@ namespace RTRSOpDashboard.WebService.Controllers
         [HttpGet]
         public HttpResponseMessage GetSystemMetricsData(DateTime from, DateTime to)
         {
-            var metricsList = new List<MetricsModel>();
+            List<MetricsModel> metricsList;
             try
             {
                 metricsList = _metricsDao.GetMetricsDataFromLastInterval(from, to);

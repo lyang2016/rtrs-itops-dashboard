@@ -4,9 +4,9 @@ using System.ServiceProcess;
 using System.Threading;
 using System.Timers;
 using Emma.Config;
-using log4net.Repository.Hierarchy;
 using RTRSCommon;
 using RTRSCommon.Exceptions;
+using WorkflowMetricsStager.Domain;
 using Timer = System.Timers.Timer;
 
 namespace WorkflowMetricsStager.Program
@@ -19,11 +19,10 @@ namespace WorkflowMetricsStager.Program
         private ManualResetEvent _stopEvent = new ManualResetEvent(true);
         private int _stopWaitTimeout;
         private bool _stopping;
-        //private DequeueRunner _dequeueRunner;
+        private StagerRunner _stageRunner;
         private int _timerInterval;
         private int _fatalStopCountLimit;
         private int _errorWaitInterval;
-        private int _maxNumberOfBatches;
         private FatalErrorCounter _fatalErrorCounter;
         private const string ComponentName = "WorkflowMetricsStager";
         private bool _serviceErrorFlag;
@@ -67,10 +66,10 @@ namespace WorkflowMetricsStager.Program
         {
             try
             {
-                _stopWaitTimeout = int.Parse(_configuration.Properties["rtrs_op_dashboard_stop_wait_interval_secs", true]) * 1000;
-                _timerInterval = int.Parse(_configuration.Properties["rtrs_op_dashboard_sleep_interval_millisecs", true]);
-                _fatalStopCountLimit = int.Parse(_configuration.Properties["rtrs_op_dashboard_fatal_error_stop_count", true]);
-                _errorWaitInterval = int.Parse(_configuration.Properties["rtrs_op_dashboard_error_wait_interval_secs", true]) * 1000;
+                _stopWaitTimeout = int.Parse(_configuration.Properties["workflow_stager_stop_wait_interval_secs", true]) * 1000;
+                _timerInterval = int.Parse(_configuration.Properties["workflow_stager_sleep_interval_millisecs", true]);
+                _fatalStopCountLimit = int.Parse(_configuration.Properties["workflow_stager_fatal_error_stop_count", true]);
+                _errorWaitInterval = int.Parse(_configuration.Properties["workflow_stager_error_wait_interval_secs", true]) * 1000;
             }
             catch (Exception ex)
             {
@@ -142,36 +141,19 @@ namespace WorkflowMetricsStager.Program
                     _fatalErrorCounter.Reevaluate();
                     var stopwatch = Stopwatch.StartNew();
 
-                    // StagerRunner code here ...
+                    if (_stageRunner == null)
+                    {
+                        _stageRunner = new StagerRunner();
+                    }
+
+                    if (!_stopping)
+                    {
+                        _stageRunner.Run();                        
+                    }
 
                     Loggers.ApplicationTrace.DebugFormat("OnTimedEvent: start: {0}, duration: {1} ms", DateTime.Now, stopwatch.ElapsedMilliseconds);
                     stopwatch.Stop();
 
-                    /*
-                    var batchCount = 0;
-                    var totalMsgCount = 0;
-                    if (_dequeueRunner == null)
-                    {
-                        _dequeueRunner = new DequeueRunner();
-                    }
-                    while (true)
-                    {
-                        var msgCount = _dequeueRunner.Run();
-                        batchCount++;
-                        totalMsgCount += msgCount;
-
-                        if (msgCount == 0 || _stopping)
-                        {
-                            break;
-                        }
-                    }
-                    stopwatch.Stop();
-                    if (totalMsgCount > 0)
-                    {
-                        Loggers.ApplicationTrace.DebugFormat("OnTimedEvent: processed messages: {0}, batch count: {1}, duration: {2} ms",
-                            totalMsgCount, batchCount, stopwatch.ElapsedMilliseconds);
-                    }
-                     */
                 }
                 catch (Exception ex)
                 {

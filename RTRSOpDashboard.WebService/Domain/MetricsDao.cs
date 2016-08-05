@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using Emma.Config;
-using RTRSOpDashboard.WebService.Models;
+using RTRSOpDashboard.DataModel;
 
 namespace RTRSOpDashboard.WebService.Domain
 {

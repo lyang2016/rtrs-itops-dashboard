@@ -51,25 +51,36 @@ namespace WorkflowMetricsStager.Domain
             return metricsList;
         }
 
-        public virtual void InsertSystemMetricsData(List<MetricsModel> metricsList)
+        public void InsertSystemMetricsData(List<MetricsModel> metricsList)
         {
             metricsList.ForEach(InsertSingleMetricsData);
         }
 
-        public virtual void InsertSingleMetricsData(MetricsModel mm)
+        public void InsertSingleMetricsData(MetricsModel mm)
         {
             try
             {
                 using (var conn = Database.Instance.WriteConnection)
                 {
                     conn.Open();
+                    using (var cmdx = conn.CreateCommandEx())
+                    {
+                        var cmd = cmdx.Cmd;
+                        cmd.CommandText = "RTRSMETRICS.PKG_METRICS.sp_merge_thruput";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.BindByName(true);
+                        cmd.AddParameter("P_SITE_ID", ODT.Varchar2, mm.SiteId);
+                        cmd.AddParameter("P_COMPLETION_SECOND", ODT.Date, mm.CompletionSecond);
+                        cmd.AddParameter("P_WORKFLOW_ID", ODT.Number, mm.WorkflowId);
+                        cmd.AddParameter("P_MESSAGE_COUNT_COMPLETED", ODT.Number, mm.MessageCount);
 
-
+                        cmd.ExecuteNonQuery();
+                    }
                 }
             }
             catch (Exception ex)
             {
-                Loggers.ApplicationTrace.Error(string.Format("StagerDAO.InsertSingleMetric: Site Id {0}", mm.SiteId), ex);
+                Loggers.ApplicationTrace.Error(string.Format("Error when inserting single metrics data: Site Id {0}, Workflow Id {1} and Completion Second {2}", mm.SiteId, mm.WorkflowId, (Convert.ToDateTime(mm.CompletionSecond)).ToString("yyyy-MM-dd HH:mm:ss")), ex);
                 throw;
             }
         }
