@@ -64,7 +64,12 @@
                             break;
 
                     }
-                    //var chart = $('#container').highcharts();
+
+                    // set fixed or auto scaled y-axis
+                    if (yAxisFixed === 'true') {
+                        chart.yAxis[0].setExtremes(yAxisMin, yAxisMax);
+                    }
+
                     var series = chart.series[0];
 
                     var shift = series.data.length > nonShiftPoints; // shift if the series is longer than 20
@@ -99,6 +104,9 @@
             title: {
                 text: 'DQer'
             },
+            credits: {
+                enabled: false
+            },
             xAxis: {
                 type: 'datetime',
                 tickPixelInterval: 150,
@@ -108,6 +116,8 @@
                 title: {
                     text: ''
                 },
+                //max: 1000,
+                //min: 0,
                 plotLines: [{
                     value: 0,
                     width: 1,
@@ -141,6 +151,9 @@
             title: {
                 text: 'Parser'
             },
+            credits: {
+                enabled: false
+            },
             xAxis: {
                 type: 'datetime',
                 tickPixelInterval: 150,
@@ -150,6 +163,8 @@
                 title: {
                     text: ''
                 },
+                //max: 1000,
+                //min: 0,
                 plotLines: [{
                     value: 0,
                     width: 1,
@@ -183,6 +198,9 @@
             title: {
                 text: 'A-12 Getter'
             },
+            credits: {
+                enabled: false
+            },
             xAxis: {
                 type: 'datetime',
                 tickPixelInterval: 150,
@@ -192,6 +210,8 @@
                 title: {
                     text: ''
                 },
+                //max: 1000,
+                //min: 0,
                 plotLines: [{
                     value: 0,
                     width: 1,
@@ -225,6 +245,9 @@
             title: {
                 text: 'CSM Getter'
             },
+            credits: {
+                enabled: false
+            },
             xAxis: {
                 type: 'datetime',
                 tickPixelInterval: 150,
@@ -234,6 +257,8 @@
                 title: {
                     text: ''
                 },
+                //max: 1000,
+                //min: 0,
                 plotLines: [{
                     value: 0,
                     width: 1,
@@ -267,6 +292,9 @@
             title: {
                 text: 'Matcher'
             },
+            credits: {
+                enabled: false
+            },
             xAxis: {
                 type: 'datetime',
                 tickPixelInterval: 150,
@@ -276,6 +304,8 @@
                 title: {
                     text: ''
                 },
+                //max: 1000,
+                //min: 0,
                 plotLines: [{
                     value: 0,
                     width: 1,
@@ -309,6 +339,9 @@
             title: {
                 text: 'Processor'
             },
+            credits: {
+                enabled: false
+            },
             xAxis: {
                 type: 'datetime',
                 tickPixelInterval: 150,
@@ -318,6 +351,8 @@
                 title: {
                     text: ''
                 },
+                //max: 1000,
+                //min: 0,
                 plotLines: [{
                     value: 0,
                     width: 1,
@@ -351,6 +386,9 @@
             title: {
                 text: 'Responder'
             },
+            credits: {
+                enabled: false
+            },
             xAxis: {
                 type: 'datetime',
                 tickPixelInterval: 150,
@@ -360,6 +398,8 @@
                 title: {
                     text: ''
                 },
+                //max: 1000,
+                //min: 0,
                 plotLines: [{
                     value: 0,
                     width: 1,
@@ -393,6 +433,9 @@
             title: {
                 text: 'Disseminator'
             },
+            credits: {
+                enabled: false
+            },
             xAxis: {
                 type: 'datetime',
                 tickPixelInterval: 150,
@@ -402,6 +445,8 @@
                 title: {
                     text: ''
                 },
+                //max: 1000,
+                //min: 0,
                 plotLines: [{
                     value: 0,
                     width: 1,
