@@ -1,0 +1,39 @@
+﻿@using Emma.Config
+
+@{
+    ViewBag.Title = "IT Ops Dashboard";
+}
+<div class="row process">
+        <div id="dqer" class="col-md-3"></div>
+        <div id="parser" class="col-md-3"></div>
+        <div id="a12" class="col-md-3"></div>
+        <div id="csm" class="col-md-3"></div>
+    </div>
+<div class="row process">
+        <div id="matcher" class="col-md-3"></div>
+        <div id="processor" class="col-md-3"></div>
+        <div id="responder" class="col-md-3"></div>
+        <div id="disseminator" class="col-md-3"></div>
+    </div>
+
+
+@section scripts
+{
+    @*<script src="https://code.highcharts.com/highcharts.js"></script>*@
+    @*<script src="https://code.highcharts.com/modules/exporting.js"></script>*@
+    <script src="~/Scripts/highcharts.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    @*<script src="~/Scripts/chart.js"></script>*@
+    <script src="~/Scripts/dashBoard.js"></script>
+    <script src="~/Scripts/chartComponent.js"></script>
+}
+
+<script>
+    var pollingIntervalInSeconds = '@Configuration.Instance.Properties["chart_polling_interval_in_seconds", true]';
+    var monitoringWindowInSeconds = '@Configuration.Instance.Properties["chart_monitoring_window_in_seconds", true]';
+    var nonShiftPoints = monitoringWindowInSeconds / pollingIntervalInSeconds;
+    var yAxisMax = '@Configuration.Instance.Properties["chart_y_axis_max", true]';
+    var yAxisMin = '@Configuration.Instance.Properties["chart_y_axis_min", true]';
+    var yAxisFixed = '@Configuration.Instance.Properties["chart_y_axis_fixed", true]';
+    var chartUrl = '@Url.Action("GetMetricsData", "Home")';
+</script>

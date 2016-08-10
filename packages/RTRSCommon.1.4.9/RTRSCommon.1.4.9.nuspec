@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>RTRSCommon</id>
+    <version>1.4.9</version>
+    <title>RTRSCommon</title>
+    <authors>MSRB</authors>
+    <owners>MSRB</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>RTRSCommmon</description>
+    <summary>RTRSCommmon</summary>
+    <releaseNotes />
+    <copyright />
+    <language />
+  </metadata>
+</package>
