@@ -62,13 +62,17 @@ MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints
             marginRight: 10,
             renderTo: container,
             events: {
-                load: function () {
+                load: function() {
                     requestData(this, moment('2016-06-29 10:00:00'), workFlowId);
                 }
             }
         },
         title: {
-            text: name
+            text: name,
+            style: {
+                color: '#003366',
+                fontWeight: 'bold'
+            }
         },
         credits: {
             enabled: false
@@ -76,7 +80,13 @@ MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints
         xAxis: {
             type: 'datetime',
             tickPixelInterval: 150,
-            minRange: pollingIntervalInSeconds * nonShiftPoints * 1000
+            minRange: pollingIntervalInSeconds * nonShiftPoints * 1000,
+            labels: {
+                style: {
+                    color: '#333',
+                    fontWeight:'bold'
+                }
+            }
         },
         yAxis: {
             title: {
@@ -84,11 +94,23 @@ MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints
             },
             //max: 1000,
             //min: 0,
+            labels: {
+                style: {
+                    color: '#333',
+                    fontWeight: 'bold'
+                }
+            },
             plotLines: [{
                 value: 0,
                 width: 1,
                 color: '#808080'
             }]
+        },
+        plotOptions:{
+            series:{
+                lineWidth: 5,
+                color: '#ee7406'
+            }
         },
         legend: {
             enabled: false
