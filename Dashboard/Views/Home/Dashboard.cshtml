@@ -1,4 +1,5 @@
-﻿@using Emma.Config
+﻿@using Dashboard.Domain
+@using Emma.Config
 
 @{
     ViewBag.Title = "IT Ops Dashboard";
@@ -19,11 +20,13 @@
 
 @section scripts
 {
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    @*<script src="https://code.highcharts.com/highcharts.js"></script>*@
+    @*<script src="https://code.highcharts.com/modules/exporting.js"></script>*@
+    <script src="~/Scripts/highcharts.js"></script>
     <script src="~/Scripts/moment.min.js"></script>
     @*<script src="~/Scripts/chart.js"></script>*@
     <script src="~/Scripts/dashBoard.js"></script>
+    <script src="~/Scripts/dataService.js"></script>
     <script src="~/Scripts/chartComponent.js"></script>
 }
 
@@ -34,5 +37,5 @@
     var yAxisMax = '@Configuration.Instance.Properties["chart_y_axis_max", true]';
     var yAxisMin = '@Configuration.Instance.Properties["chart_y_axis_min", true]';
     var yAxisFixed = '@Configuration.Instance.Properties["chart_y_axis_fixed", true]';
-    var chartUrl = '@Url.Action("GetMetricsData", "Home")';
+    var dataCenters = '@HttpUtility.HtmlDecode(ConfigReader.Instance.GetDataCenterConfigs())';
 </script>

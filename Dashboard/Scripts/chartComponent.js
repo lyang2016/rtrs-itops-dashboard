@@ -1,54 +1,86 @@
 ﻿function requestData(thisObj, currentTime, workFlowId) {
     var to = moment(currentTime);
     var from = to.clone().subtract(pollingIntervalInSeconds, 'seconds');
-    var apiUrl = chartUrl + '?from=' + from.format('YYYY-MM-DD HH:mm:ss') + '&to=' + to.format('YYYY-MM-DD HH:mm:ss');
-    console.log(apiUrl);
-    $.ajax({
-        type: 'GET',
-        url: apiUrl,
-        dataType: 'json',
-        success: function (data) {
-            var arr, x, y;
-            arr = $.parseJSON(data.Result);
-            if (arr.length > 0) {
-                // Replace T with space to prevent it to be treated as UTC date string
-                x = Date.parse(arr[0].CompletionSecond.replace('T', ' '));
-                y = 0;
-                for (var i in arr) {
-                    var id = arr[i].WorkflowId;
-                    if (id == workFlowId) {
-                        y = arr[i].MessageCount;
-                        break;
-                    }
+
+    var arrCenters = $.parseJSON(dataCenters.replace(new RegExp('&quot;', 'g'), '"'));
+
+    //for (var index in arrCenters) {
+    //    var apiUrl = arrCenters[index].WebApiUrl + '?from=' + from.format('YYYY-MM-DD HH:mm:ss') + '&to=' + to.format('YYYY-MM-DD HH:mm:ss');
+    //    console.log(apiUrl);
+    //}
+
+    var site1_url = arrCenters[0].WebApiUrl + '?from=' + from.format('YYYY-MM-DD HH:mm:ss') + '&to=' + to.format('YYYY-MM-DD HH:mm:ss');
+    var site2_url = arrCenters[1].WebApiUrl + '?from=' + from.format('YYYY-MM-DD HH:mm:ss') + '&to=' + to.format('YYYY-MM-DD HH:mm:ss');
+
+    dataService.getAllSitesChartData(site1_url, site2_url)
+            .done(function (data1, data2) {
+                var chart = thisObj;
+
+                // set fixed or auto scaled y-axis
+                if (yAxisFixed === 'true') {
+                    chart.yAxis[0].setExtremes(yAxisMin, yAxisMax);
                 }
-            } else {
-                x = Date.parse(currentTime.format('YYYY-MM-DD HH:mm:ss'));
-                y = 0;
-            }
 
-            var chart = thisObj;
+                var arr, x, y;
+                // series 1
+                var series = chart.series[0];
+                var shift = series.data.length > nonShiftPoints; // shift if the series is longer than 20
 
-            // set fixed or auto scaled y-axis
-            if (yAxisFixed === 'true') {
-                chart.yAxis[0].setExtremes(yAxisMin, yAxisMax);
-            }
+                arr = data1[0];
+                if (arr.length > 0) {
+                    // Replace T with space to prevent it to be treated as UTC date string
+                    x = Date.parse(arr[0].CompletionSecond.replace('T', ' '));
+                    y = 0;
+                    for (var i in arr) {
+                        var id = arr[i].WorkflowId;
+                        if (id == workFlowId) {
+                            y = arr[i].MessageCount;
+                            break;
+                        }
+                    }
+                } else {
+                    x = Date.parse(currentTime.format('YYYY-MM-DD HH:mm:ss'));
+                    y = 0;
+                }
 
-            var series = chart.series[0];
+                //add the point
+                chart.series[0].addPoint([x, y], false, shift);
 
-            var shift = series.data.length > nonShiftPoints; // shift if the series is longer than 20
+                // series 2
+                series = chart.series[1];
+                shift = series.data.length > nonShiftPoints; // shift if the series is longer than 20
 
-            //add the point
-            chart.series[0].addPoint([x, y], true, shift);
+                arr = data2[0];
+                if (arr.length > 0) {
+                    // Replace T with space to prevent it to be treated as UTC date string
+                    x = Date.parse(arr[0].CompletionSecond.replace('T', ' '));
+                    y = 0;
+                    for (i in arr) {
+                        id = arr[i].WorkflowId;
+                        if (id == workFlowId) {
+                            y = arr[i].MessageCount;
+                            break;
+                        }
+                    }
+                } else {
+                    x = Date.parse(currentTime.format('YYYY-MM-DD HH:mm:ss'));
+                    y = 0;
+                }
+
+                //add the point
+                chart.series[1].addPoint([x, y], true, shift);
 
 
-            // call it again after polling interval in seconds
-            setTimeout(function () {
-                requestData(chart, currentTime.add(pollingIntervalInSeconds, 'seconds'), workFlowId);
-            }, pollingIntervalInSeconds * 1000);
+                // call it again after polling interval in seconds
+                setTimeout(function () {
+                    requestData(chart, currentTime.add(pollingIntervalInSeconds, 'seconds'), workFlowId);
+                }, pollingIntervalInSeconds * 1000);
+            })
+            .fail(function (jqXHR, statusText, err) {
+                var errorMessage = err || xhr.statusText;
+                alert(errorMessage);
+            });
 
-        },
-        cache: false
-    });
 }
 
 // define MSRB namespace
@@ -98,6 +130,10 @@ MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints
         },
         series: [{
             name: name,
+            data: []
+        },
+        {
+            name: 'Fake',
             data: []
         }]
     });
