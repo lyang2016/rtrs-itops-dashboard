@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -26,20 +27,20 @@ namespace RTRSOpDashboard.WebService.Controllers
         }
 
         [HttpGet]
-        public HttpResponseMessage GetSystemMetricsData(DateTime from, DateTime to)
+        public IHttpActionResult GetSystemMetricsData(DateTime from, DateTime to, short workflowId)
         {
-            List<MetricsModel> metricsList;
+            var metricsList = new List<MetricsModel>();
             try
             {
-                metricsList = _metricsDao.GetMetricsDataFromLastInterval(from, to);
+                metricsList = _metricsDao.GetMetricsDataFromLastInterval(from, to).Where(x => x.WorkflowId == workflowId).ToList();
             }
             catch (Exception ex)
             {
                 Loggers.ApplicationTrace.ErrorFormat("Exception from GetMetricsData - {0}", ex.Message);
-                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                return Content(HttpStatusCode.NoContent, metricsList);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, metricsList);
+            return Ok(metricsList);
         }
 
     }

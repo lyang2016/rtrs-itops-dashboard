@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Results;
 using NUnit.Framework;
 using Rhino.Mocks;
 using RTRSOpDashboard.DataModel;
@@ -22,12 +23,14 @@ namespace RTRSOpDashboardTests.WebService.Controllers
         {
             _metricsDao = MockRepository.GenerateMock<IMetricsDao>();
 
-            _controller = new MetricsController(_metricsDao)
-            {
-                // Initialize the request in controller to prevent NULL error
-                Request = new HttpRequestMessage(),
-                Configuration = new HttpConfiguration()
-            };
+            //_controller = new MetricsController(_metricsDao)
+            //{
+            //    // Initialize the request in controller to prevent NULL error
+            //    Request = new HttpRequestMessage(),
+            //    Configuration = new HttpConfiguration()
+            //};
+
+            _controller = new MetricsController(_metricsDao);
         }
 
         [Test]
@@ -38,7 +41,7 @@ namespace RTRSOpDashboardTests.WebService.Controllers
             var to = from.AddSeconds(1);
 
             // Act
-            var response = _controller.GetSystemMetricsData(from, to);
+            var response = _controller.GetSystemMetricsData(from, to, 1);
 
             // Assert
             _metricsDao.AssertWasCalled(x => x.GetMetricsDataFromLastInterval(from, to));
@@ -56,16 +59,18 @@ namespace RTRSOpDashboardTests.WebService.Controllers
                 CompletionSecond = new DateTime(2000, 1, 1, 10, 30, 0),
                 MessageCount = 100
             };
-            var list = new List<MetricsModel>();
-            list.Add(record);
+            var list = new List<MetricsModel> {record};
             _metricsDao.Stub(dao => dao.GetMetricsDataFromLastInterval(from, to)).Return(list);
-            List<MetricsModel> output;
+            //List<MetricsModel> output;
 
-            var response = _controller.GetSystemMetricsData(from, to);
+            //var response = _controller.GetSystemMetricsData(from, to);
+            IHttpActionResult actionResult = _controller.GetSystemMetricsData(from, to, 1);
+            var contentResult = actionResult as OkNegotiatedContentResult<List<MetricsModel>>;
 
-            Assert.IsTrue(response.TryGetContentValue<List<MetricsModel>>(out output));
-            Assert.AreEqual(1, output.Count);
-            Assert.AreEqual(100, output[0].MessageCount);
+            //Assert.IsTrue(response.TryGetContentValue<List<MetricsModel>>(out output));
+            Assert.IsNotNull(contentResult);
+            Assert.AreEqual(1, contentResult.Content.Count);
+            Assert.AreEqual(100, contentResult.Content[0].MessageCount);
         }
 
         [Test]
@@ -80,10 +85,12 @@ namespace RTRSOpDashboardTests.WebService.Controllers
                 .Throw(new Exception());
 
             // Act
-            var response = _controller.GetSystemMetricsData(from, to);
+            var response = _controller.GetSystemMetricsData(from, to, 1);
+            var contentResult = response as NegotiatedContentResult<List<MetricsModel>>;
 
             // Assert
-            Assert.AreEqual(HttpStatusCode.InternalServerError, response.StatusCode);
+            Assert.IsNotNull(contentResult);
+            Assert.AreEqual(HttpStatusCode.NoContent, contentResult.StatusCode);
         }
     }
 }

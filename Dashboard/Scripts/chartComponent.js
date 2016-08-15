@@ -9,8 +9,8 @@
     //    console.log(apiUrl);
     //}
 
-    var site1_url = arrCenters[0].WebApiUrl + '?from=' + from.format('YYYY-MM-DD HH:mm:ss') + '&to=' + to.format('YYYY-MM-DD HH:mm:ss');
-    var site2_url = arrCenters[1].WebApiUrl + '?from=' + from.format('YYYY-MM-DD HH:mm:ss') + '&to=' + to.format('YYYY-MM-DD HH:mm:ss');
+    var site1_url = arrCenters[0].WebApiUrl + '?from=' + from.format('YYYY-MM-DD HH:mm:ss') + '&to=' + to.format('YYYY-MM-DD HH:mm:ss') + '&workflowId=' + workFlowId;
+    var site2_url = arrCenters[1].WebApiUrl + '?from=' + from.format('YYYY-MM-DD HH:mm:ss') + '&to=' + to.format('YYYY-MM-DD HH:mm:ss') + '&workflowId=' + workFlowId;
 
     dataService.getAllSitesChartData(site1_url, site2_url)
             .done(function (data1, data2) {
@@ -30,14 +30,14 @@
                 if (arr.length > 0) {
                     // Replace T with space to prevent it to be treated as UTC date string
                     x = Date.parse(arr[0].CompletionSecond.replace('T', ' '));
-                    y = 0;
-                    for (var i in arr) {
-                        var id = arr[i].WorkflowId;
-                        if (id == workFlowId) {
-                            y = arr[i].MessageCount;
-                            break;
-                        }
-                    }
+                    y = arr[0].MessageCount;
+                    //for (var i in arr) {
+                    //    var id = arr[i].WorkflowId;
+                    //    if (id == workFlowId) {
+                    //        y = arr[i].MessageCount;
+                    //        break;
+                    //    }
+                    //}
                 } else {
                     x = Date.parse(currentTime.format('YYYY-MM-DD HH:mm:ss'));
                     y = 0;
@@ -131,19 +131,19 @@ MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints
                     color: '#333',
                     fontWeight: 'bold'
                 }
-            },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
-            }]
-        },
-        plotOptions:{
-            series:{
-                lineWidth: 5,
-                color: '#ee7406'
             }
+            //plotLines: [{
+            //    value: 0,
+            //    width: 1,
+            //    color: '#808080'
+            //}]
         },
+        //plotOptions:{
+        //    series:{
+        //        lineWidth: 5,
+        //        color: '#ee7406'
+        //    }
+        //},
         legend: {
             enabled: false
         },
