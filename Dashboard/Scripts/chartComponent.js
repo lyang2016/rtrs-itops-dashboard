@@ -12,7 +12,7 @@
     var site1_url = arrCenters[0].WebApiUrl + '?from=' + from.format('YYYY-MM-DD HH:mm:ss') + '&to=' + to.format('YYYY-MM-DD HH:mm:ss') + '&workflowId=' + workFlowId;
     var site2_url = arrCenters[1].WebApiUrl + '?from=' + from.format('YYYY-MM-DD HH:mm:ss') + '&to=' + to.format('YYYY-MM-DD HH:mm:ss') + '&workflowId=' + workFlowId;
 
-    dataService.getAllSitesChartData(site1_url, site2_url)
+    MSRB.dataService.getAllSitesChartData(site1_url, site2_url)
             .done(function (data1, data2) {
                 var chart = thisObj;
 
@@ -31,13 +31,6 @@
                     // Replace T with space to prevent it to be treated as UTC date string
                     x = Date.parse(arr[0].CompletionSecond.replace('T', ' '));
                     y = arr[0].MessageCount;
-                    //for (var i in arr) {
-                    //    var id = arr[i].WorkflowId;
-                    //    if (id == workFlowId) {
-                    //        y = arr[i].MessageCount;
-                    //        break;
-                    //    }
-                    //}
                 } else {
                     x = Date.parse(currentTime.format('YYYY-MM-DD HH:mm:ss'));
                     y = 0;
@@ -54,14 +47,7 @@
                 if (arr.length > 0) {
                     // Replace T with space to prevent it to be treated as UTC date string
                     x = Date.parse(arr[0].CompletionSecond.replace('T', ' '));
-                    y = 0;
-                    for (i in arr) {
-                        id = arr[i].WorkflowId;
-                        if (id == workFlowId) {
-                            y = arr[i].MessageCount;
-                            break;
-                        }
-                    }
+                    y = arr[0].MessageCount;
                 } else {
                     x = Date.parse(currentTime.format('YYYY-MM-DD HH:mm:ss'));
                     y = 0;
@@ -83,8 +69,7 @@
 
 }
 
-// define MSRB namespace
-var MSRB = MSRB || {};
+
 
 MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints, workFlowId) {
     this.chart = new Highcharts.Chart({

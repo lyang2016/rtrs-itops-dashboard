@@ -31,6 +31,9 @@
 }
 
 <script>
+    // define MSRB namespace
+    var MSRB = MSRB || {};
+
     var pollingIntervalInSeconds = '@Configuration.Instance.Properties["chart_polling_interval_in_seconds", true]';
     var monitoringWindowInSeconds = '@Configuration.Instance.Properties["chart_monitoring_window_in_seconds", true]';
     var nonShiftPoints = monitoringWindowInSeconds / pollingIntervalInSeconds;

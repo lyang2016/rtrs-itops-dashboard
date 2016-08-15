@@ -1,4 +1,4 @@
-﻿var dataService = function() {
+﻿MSRB.dataService = function() {
 
     var getChartData = function(apiUrl) {
         return $.ajax({

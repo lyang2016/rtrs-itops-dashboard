@@ -1,5 +1,4 @@
 ﻿
-
 $(function () {
 
     Highcharts.setOptions({
