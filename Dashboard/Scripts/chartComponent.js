@@ -137,11 +137,13 @@ MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints
         },
         series: [{
             name: name,
-            data: []
+            data: [],
+            color: '#003874'
         },
         {
             name: 'Fake',
-            data: []
+            data: [],
+            color: '#2c992e'
         }]
     });
 

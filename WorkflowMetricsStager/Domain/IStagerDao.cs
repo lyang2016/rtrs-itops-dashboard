@@ -8,5 +8,6 @@ namespace WorkflowMetricsStager.Domain
     {
         List<MetricsModel> GetSystemMetricsDataFromWorkflow(string siteId, DateTime from, DateTime to);
         void InsertSystemMetricsData(List<MetricsModel> metricsList);
+        DateTime GetLastRunTime();
     }
 }

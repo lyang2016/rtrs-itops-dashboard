@@ -1,11 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowMetricsStager.Program", "WorkflowMetricsStager.Program\WorkflowMetricsStager.Program.csproj", "{C2783A77-BCE2-4D2D-9869-7D52CA89F278}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B800E722-FDA2-49BC-B886-C6F195943C30}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowMetricsStager", "WorkflowMetricsStager\WorkflowMetricsStager.csproj", "{F8436D6C-1619-4D5A-8566-B492F951CAE7}"
 EndProject

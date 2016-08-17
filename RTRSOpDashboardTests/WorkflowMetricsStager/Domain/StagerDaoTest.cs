@@ -59,9 +59,30 @@ namespace RTRSOpDashboardTests.WorkflowMetricsStager.Domain
             Assert.AreEqual(100, dt.Rows[0]["MESSAGE_COUNT_COMPLETED"]);
         }
 
+        [Test]
+        public void GetLastRunTime()
+        {
+            // Arrange
+            InsertTestSystemMetricsData(DateTime.Parse("2999-1-1 10:00:00"));
+
+            // Act
+            var stagerDao = new StagerDao();
+            var lastRunTime = stagerDao.GetLastRunTime();
+
+            // Assert
+            Assert.AreEqual(DateTime.Parse("2999-1-1 10:00:00"), lastRunTime);
+        }
+
         private static DataTable GetSystemMetricsData()
         {
            return TestHelper.GetData("select * from rtrsmetrics.site_module_thruput_by_sec where site_id = '{0}'", SiteId);
+        }
+
+        private static void InsertTestSystemMetricsData(DateTime completionSecond)
+        {
+            TestHelper.RunQuery(
+                "INSERT INTO RTRSMETRICS.SITE_MODULE_THRUPUT_BY_SEC(SITE_ID, COMPLETION_SECOND, WORKFLOW_ID, MESSAGE_COUNT_COMPLETED) " +
+                "values ('{0}', to_date('{1}', 'DD-MON-YYYY HH:MI:SS AM'), 1, 100)", SiteId, TestHelper.FormatOracleDateTime(completionSecond));
         }
     }
 }

@@ -26,6 +26,8 @@ namespace WorkflowMetricsStager.Program
         private FatalErrorCounter _fatalErrorCounter;
         private const string ComponentName = "WorkflowMetricsStager";
         private bool _serviceErrorFlag;
+        private string _timerStartTime;
+        private string _timerEndTime;
 
         public WorkflowMetricsService()
         {
@@ -41,11 +43,6 @@ namespace WorkflowMetricsStager.Program
                     _stopEvent.Dispose();
                     _stopEvent = null;
                 }
-                //if (_dequeueRunner != null)
-                //{
-                //    _dequeueRunner.Dispose();
-                //    _dequeueRunner = null;
-                //}
             }
             base.Dispose(disposing);
         }
@@ -70,6 +67,8 @@ namespace WorkflowMetricsStager.Program
                 _timerInterval = int.Parse(_configuration.Properties["workflow_stager_sleep_interval_millisecs", true]);
                 _fatalStopCountLimit = int.Parse(_configuration.Properties["workflow_stager_fatal_error_stop_count", true]);
                 _errorWaitInterval = int.Parse(_configuration.Properties["workflow_stager_error_wait_interval_secs", true]) * 1000;
+                _timerStartTime = _configuration.Properties["workflow_stager_start_time", true];
+                _timerEndTime = _configuration.Properties["workflow_stager_end_time", true];
             }
             catch (Exception ex)
             {
@@ -89,7 +88,8 @@ namespace WorkflowMetricsStager.Program
                 if (!_timer.Enabled)
                 {
                     _timer.Elapsed += OnTimedEvent;
-                    _timer.Interval = _timerInterval;
+                    //_timer.Interval = _timerInterval;
+                    _timer.Interval = GetTimerIntervalInMilliSeconds();
                     _timer.Start();
                 }
             }
@@ -168,6 +168,7 @@ namespace WorkflowMetricsStager.Program
                     if (!_stopping)
                     {
                         _timer.Start();
+                        _timer.Interval = GetTimerIntervalInMilliSeconds();
                     }
                 }
             }
@@ -187,7 +188,6 @@ namespace WorkflowMetricsStager.Program
                 ShutdownServiceAfterError();
                 return;
             }
-            //_dequeueRunner.DisposeDbConnetion();
             try
             {
                 Loggers.ApplicationTrace.WarnFormat("Unexpected error has occurred. Service will wait for {0} ms and then try again.", _errorWaitInterval);
@@ -214,5 +214,25 @@ namespace WorkflowMetricsStager.Program
             }
         }
 
+        private int GetTimerIntervalInMilliSeconds()
+        {
+            var interval = _timerInterval;
+            var midNight = DateTime.Today;
+            var currentTime = DateTime.Now;
+            var timerStartTime = midNight.Add(TimeSpan.Parse(_timerStartTime));
+            var timerEndTime = midNight.Add(TimeSpan.Parse(_timerEndTime));
+            var nextDayTimerStartTime = timerStartTime.AddDays(1);
+
+            if (currentTime < timerStartTime)
+            {
+                interval = (int) timerStartTime.Subtract(currentTime).TotalMilliseconds;
+            }
+            else if (currentTime > timerEndTime && currentTime < nextDayTimerStartTime)
+            {
+                interval = (int) nextDayTimerStartTime.Subtract(currentTime).TotalMilliseconds;
+            }
+
+            return interval;
+        }
     }
 }

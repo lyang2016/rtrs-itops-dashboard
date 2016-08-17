@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml.Linq;
 using Dashboard.Models;
@@ -6,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace Dashboard.Domain
 {
+    [ExcludeFromCodeCoverage]
     public class ConfigReader
     {
         private static readonly ConfigReader instance = new ConfigReader();

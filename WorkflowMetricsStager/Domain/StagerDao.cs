@@ -84,5 +84,36 @@ namespace WorkflowMetricsStager.Domain
                 throw;
             }
         }
+
+        public DateTime GetLastRunTime()
+        {
+            var lastRunTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+            try
+            {
+                using (var conn = Database.Instance.ReadConnection)
+                {
+                    conn.Open();
+                    using (var cmdx = conn.CreateCommandEx())
+                    {
+                        var cmd = cmdx.Cmd;
+                        cmd.CommandText = "RTRSMETRICS.PKG_METRICS.f_get_latest_runtime";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.BindByName(true);
+                        var returnValue = cmd.AddParameterEx("Return_Value", null, ODT.Date, ParameterDirection.ReturnValue, 7);
+
+                        cmd.ExecuteScalar();
+                        lastRunTime = DateTime.Parse(returnValue.Value.ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Loggers.ApplicationTrace.Error(string.Format("Error when getting the workflow stager last run time"), ex);
+                throw;
+            }
+
+            return lastRunTime;
+        }
     }
 }
