@@ -5,17 +5,23 @@
     ViewBag.Title = "IT Ops Dashboard";
 }
 <div class="row process">
-        <div id="dqer" class="col-md-3"></div>
-        <div id="parser" class="col-md-3"></div>
-        <div id="a12" class="col-md-3"></div>
-        <div id="csm" class="col-md-3"></div>
-    </div>
+    <div id="inbound" class="col-md-2"></div>
+    <div id="outbound" class="col-md-2"></div>
+    <div id="dqer" class="col-md-2"></div>
+    <div id="parser" class="col-md-2"></div>
+    <div id="a12" class="col-md-2"></div>
+</div>
 <div class="row process">
-        <div id="matcher" class="col-md-3"></div>
-        <div id="processor" class="col-md-3"></div>
-        <div id="responder" class="col-md-3"></div>
-        <div id="disseminator" class="col-md-3"></div>
-    </div>
+    <div id="csm" class="col-md-2"></div>    
+    <div id="matcher" class="col-md-2"></div>
+    <div id="processor" class="col-md-2"></div>
+    <div id="responder" class="col-md-2"></div>
+    <div id="disseminator" class="col-md-2"></div>
+</div>
+<div class="row process">
+    <div id="ete" class="col-md-6"></div>
+    @*<div id="tabular" class="col-md-4"></div>*@
+</div>
 
 
 @section scripts
@@ -41,4 +47,11 @@
     var yAxisMin = '@Configuration.Instance.Properties["chart_y_axis_min", true]';
     var yAxisFixed = '@Configuration.Instance.Properties["chart_y_axis_fixed", true]';
     var dataCenters = '@HttpUtility.HtmlDecode(ConfigReader.Instance.GetDataCenterConfigs())';
+    var yAxisMaxMq = '@Configuration.Instance.Properties["mq_y_axis_max", true]';
+    var yAxisMinMq = '@Configuration.Instance.Properties["mq_y_axis_min", true]';
+    var yAxisFixedMq = '@Configuration.Instance.Properties["mq_y_axis_fixed", true]';
+    var yAxisMaxEte = '@Configuration.Instance.Properties["ete_y_axis_max", true]';
+    var yAxisMinEte = '@Configuration.Instance.Properties["ete_y_axis_min", true]';
+    var yAxisFixedEte = '@Configuration.Instance.Properties["ete_y_axis_fixed", true]';
+
 </script>

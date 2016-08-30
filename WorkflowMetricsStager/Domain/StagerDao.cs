@@ -34,7 +34,7 @@ namespace WorkflowMetricsStager.Domain
                                 {
                                     SiteId = siteId,
                                     CompletionSecond = reader["completion_second"] as DateTime?,
-                                    WorkflowId = Convert.ToInt16(reader["workflow_id"] as decimal?),
+                                    WorkflowId = reader["workflow_id"] as decimal?,
                                     MessageCount = reader["message_count_completed"] as decimal?
                                 });
                             }

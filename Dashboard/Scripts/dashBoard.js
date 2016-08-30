@@ -23,4 +23,6 @@ $(function () {
 
     var disseminator = new MSRB.Chart('Disseminator', 'disseminator', pollingIntervalInSeconds, nonShiftPoints, 8);
 
+    var ete = new MSRB.Chart('End-to-End Time to Response', 'ete', pollingIntervalInSeconds, nonShiftPoints, 100);
+
 });

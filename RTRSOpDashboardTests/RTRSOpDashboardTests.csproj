@@ -85,6 +85,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MQMetricsStager\Domain\StagerDaoTest.cs" />
+    <Compile Include="MQMetricsStager\Domain\StagerRunnerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestHelper.cs" />
     <Compile Include="WebService\Controllers\MetricsControllerTests.cs" />
@@ -99,6 +101,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\MQMetricsStager\MQMetricsStager.csproj">
+      <Project>{c887e523-1aee-49b4-829d-29512760bf45}</Project>
+      <Name>MQMetricsStager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RTRSOpDashboard.DataModel\RTRSOpDashboard.DataModel.csproj">
       <Project>{93260224-3568-4e23-8ea3-c493466cf8ae}</Project>
       <Name>RTRSOpDashboard.DataModel</Name>

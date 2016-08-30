@@ -1,12 +1,20 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using RTRSCommon;
 
 namespace MQMetricsStager.Domain
 {
-    public class QueueReader : IDisposable
+    public interface IQueueReader
     {
-        private readonly MqSettings _mqSettings;
+        int GetCurrentDepth();
+        void Reset();
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class QueueReader : IDisposable, IQueueReader
+    {
         private MqConnection _mqConnection;
+        private readonly MqSettings _mqSettings;
 
         public QueueReader(MqSettings mqSettings)
         {

@@ -78,9 +78,10 @@ MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints
             animation: Highcharts.svg, // don't animate in old IE
             marginRight: 10,
             renderTo: container,
+            height: 250,
             events: {
                 load: function() {
-                    requestData(this, moment('2016-06-29 10:00:00'), workFlowId);
+                    requestData(this, moment('2016-07-28 11:30:00'), workFlowId);
                 }
             }
         },

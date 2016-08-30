@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C887E523-1AEE-49B4-829D-29512760BF45}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{FBA2EEF0-A579-4BD8-8E44-422B7C92C5CC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MQMetricsStager</RootNamespace>
-    <AssemblyName>MQMetricsStager</AssemblyName>
+    <RootNamespace>MQMetricsStager.Program</RootNamespace>
+    <AssemblyName>MQMetricsStager.Program</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,51 +34,70 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="amqmdnet, Version=1.0.0.3, Culture=neutral, PublicKeyToken=dd3cb1c9aae9ec97, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\RTRSCommon.1.4.9\lib\net40\amqmdnet.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="amqmdxcs, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7a58d55a51981a15, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\RTRSCommon.1.4.9\lib\net40\amqmdxcs.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Emma.Config">
+    <Reference Include="Emma.Config, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RTRSCommon.1.4.9\lib\net40\Emma.Config.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="log4net">
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\RTRSCommon.1.4.9\lib\net40\log4net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="RTRSCommon">
+    <Reference Include="RTRSCommon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RTRSCommon.1.4.9\lib\net40\RTRSCommon.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SecurityMaster.Contracts">
+    <Reference Include="SecurityMaster.Contracts, Version=1.0.1495.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RTRSCommon.1.4.9\lib\net40\SecurityMaster.Contracts.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Transactions" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\QueueReader.cs" />
-    <Compile Include="Domain\StagerDao.cs" />
-    <Compile Include="Domain\StagerRunner.cs" />
+    <Compile Include="MqMetricsService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MqMetricsService.Designer.cs">
+      <DependentUpon>MqMetricsService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="ProjectInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectInstaller.Designer.cs">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RTRSOpDashboard.DataModel\RTRSOpDashboard.DataModel.csproj">
-      <Project>{93260224-3568-4e23-8ea3-c493466cf8ae}</Project>
-      <Name>RTRSOpDashboard.DataModel</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MQMetricsStager\MQMetricsStager.csproj">
+      <Project>{c887e523-1aee-49b4-829d-29512760bf45}</Project>
+      <Name>MQMetricsStager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

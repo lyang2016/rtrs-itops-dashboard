@@ -64,13 +64,24 @@ input[type="checkbox"].input-validation-error {
         color: #fff;
         font-weight: bold;
     }
-.process .col-md-3 {
+.process .col-md-2,.process .col-md-3,.process .col-md-4,.process .col-md-6 {
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 8px;
     margin: 10px;
-    width: 23.8%;
     background-color: #fff;
+}
+.process .col-md-2 {
+     width: 18%;
+}
+.process .col-md-3 {
+    width: 23.8%;
+}
+.process .col-md-4 {
+   width: 36%;
+}
+.process .col-md-6 {
+   width: 56%;
 }
 .navbar-inverse{ background-color: #444;}
 .navbar-inverse .navbar-brand {

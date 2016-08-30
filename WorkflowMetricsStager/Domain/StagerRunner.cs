@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Transactions;
 using Emma.Config;
+using RTRSCommon;
 
 
 namespace WorkflowMetricsStager.Domain
@@ -38,10 +39,14 @@ namespace WorkflowMetricsStager.Domain
                 from = lastRunTime;
             }
 
+            //todo Remove the hard-coded from date when deploying
+            //from = new DateTime(2016, 7, 28, 11, 0, 0);
+
             using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions(),
                     EnterpriseServicesInteropOption.Full))
             {
                 var metricsList = _dao.GetSystemMetricsDataFromWorkflow(siteId, from, to);
+                Loggers.ApplicationTrace.DebugFormat("Workflow Metrics Stager retrieves # {0} of workflow records", metricsList.Count);
                 _dao.InsertSystemMetricsData(metricsList);
                 scope.Complete();
             }

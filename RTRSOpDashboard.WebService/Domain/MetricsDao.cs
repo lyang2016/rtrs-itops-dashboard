@@ -6,11 +6,6 @@ using RTRSOpDashboard.DataModel;
 
 namespace RTRSOpDashboard.WebService.Domain
 {
-    public interface IMetricsDao
-    {
-        List<MetricsModel> GetMetricsDataFromLastInterval(DateTime from, DateTime to);
-    }
-
     public class MetricsDao : IMetricsDao
     {
         public List<MetricsModel> GetMetricsDataFromLastInterval(DateTime from, DateTime to)
@@ -39,7 +34,7 @@ namespace RTRSOpDashboard.WebService.Domain
                             {
                                 SiteId = reader["SITE_ID"] as string,
                                 CompletionSecond = to,
-                                WorkflowId = reader["WORKFLOW_ID"] as short?,
+                                WorkflowId = reader["WORKFLOW_ID"] as decimal?,
                                 MessageCount = reader["msg_count_completed"] as decimal?
                             };
 

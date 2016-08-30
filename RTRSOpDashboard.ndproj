@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<NDepend AppName="RTRSOpDashboard" Platform="DotNet">
+  <OutputDir KeepXmlFiles="False">C:\Source\rtrs-itops-dashboard\NDependOut</OutputDir>
+  <Assemblies>
+    <Name>WorkflowMetricsStager.Program</Name>
+    <Name>WorkflowMetricsStager</Name>
+    <Name>RTRSOpDashboard.WebService</Name>
+    <Name>MQMetricsStager</Name>
+    <Name>RTRSOpDashboard.DataModel</Name>
+    <Name>Dashboard</Name>
+    <Name>RTRSOpDashboardTests</Name>
+  </Assemblies>
+  <FrameworkAssemblies>
+    <Name>System.Configuration.Install</Name>
+    <Name>System.ServiceProcess</Name>
+    <Name>mscorlib</Name>
+    <Name>System</Name>
+    <Name>Emma.Config</Name>
+    <Name>RTRSCommon</Name>
+    <Name>log4net</Name>
+    <Name>System.Data</Name>
+    <Name>System.Transactions</Name>
+    <Name>System.Web.Http</Name>
+    <Name>System.Web</Name>
+    <Name>System.Core</Name>
+    <Name>System.Web.Mvc</Name>
+    <Name>System.Web.Http.WebHost</Name>
+    <Name>WebApiContrib.Formatting.Jsonp</Name>
+    <Name>System.Net.Http.Formatting</Name>
+    <Name>System.Web.Optimization</Name>
+    <Name>Microsoft.CSharp</Name>
+    <Name>System.Net.Http</Name>
+    <Name>System.Xml.Linq</Name>
+    <Name>System.Configuration</Name>
+    <Name>Newtonsoft.Json</Name>
+    <Name>Oracle.ManagedDataAccess</Name>
+    <Name>nunit.framework</Name>
+    <Name>Rhino.Mocks</Name>
+  </FrameworkAssemblies>
+  <Dirs>
+    <Dir>C:\Source\rtrs-itops-dashboard\WorkflowMetricsStager.Program\bin\Debug</Dir>
+    <Dir>C:\Source\rtrs-itops-dashboard\RTRSOpDashboard.WebService\bin</Dir>
+    <Dir>C:\Source\rtrs-itops-dashboard\MQMetricsStager\bin\Debug</Dir>
+    <Dir>C:\Source\rtrs-itops-dashboard\Dashboard\bin</Dir>
+    <Dir>C:\Source\rtrs-itops-dashboard\RTRSOpDashboardTests\bin\Debug</Dir>
+    <Dir>C:\Windows\Microsoft.NET\Framework\v4.0.30319</Dir>
+    <Dir>C:\Windows\Microsoft.NET\Framework\v4.0.30319\WPF</Dir>
+  </Dirs>
+  <MergeCodeGeneratedByCompiler>True</MergeCodeGeneratedByCompiler>
+  <Report Kind="0" SectionsEnabled="45055" XslPath="" Flags="261120" />
+  <BuildComparisonSetting ProjectMode="DontCompare" BuildMode="MostRecentAnalysisResultAvailable" ProjectFileToCompareWith="" BuildFileToCompareWith="" NDaysAgo="1" FocusOnRecentRulesViolations="False" />
+  <BaselineInUISetting ProjectMode="DontCompare" BuildMode="MostRecentAnalysisResultAvailable" ProjectFileToCompareWith="" BuildFileToCompareWith="" NDaysAgo="1" FocusOnRecentRulesViolations="False" />
+  <CoverageFiles CoverageDir="" UncoverableAttribute="" />
+  <TrendMetrics UseCustomLog="False" LogRecurrence="3" LogLabel="2" UseCustomDir="False" CustomDir="">
+    <Chart Name="Lines of Code" ShowInReport="True">
+      <Serie MetricName="# Lines of Code" MetricUnit="Loc" Color="#FF00BFFF" ChartType="Line" ScaleExp="0" />
+      <Serie MetricName="# Lines of Code Covered" MetricUnit="Loc" Color="#FF32CD32" ChartType="Area" ScaleExp="0" />
+      <Serie MetricName="# Lines of Code (NotMyCode)" MetricUnit="Loc" Color="#FFA9A9A9" ChartType="Area" ScaleExp="0" />
+      <Serie MetricName="# Lines of Comments" MetricUnit="Lines" Color="#FF008000" ChartType="Line" ScaleExp="0" />
+    </Chart>
+    <Chart Name="Rules Violated" ShowInReport="True">
+      <Serie MetricName="# Rules" MetricUnit="Rules" Color="#FF66CDAA" ChartType="Line" ScaleExp="0" />
+      <Serie MetricName="# Rules Violated" MetricUnit="Rules" Color="#FFFF8C00" ChartType="Area" ScaleExp="0" />
+      <Serie MetricName="# Critical Rules Violated" MetricUnit="Rules" Color="#FFFF0000" ChartType="Area" ScaleExp="0" />
+    </Chart>
+    <Chart Name="Rules Violations" ShowInReport="True">
+      <Serie MetricName="# Rules Violations" MetricUnit="Violations" Color="#FFFF8C00" ChartType="Area" ScaleExp="0" />
+      <Serie MetricName="# Critical Rules Violations" MetricUnit="Violations" Color="#FFFF0000" ChartType="Area" ScaleExp="0" />
+    </Chart>
+    <Chart Name="Percentage Coverage by Tests" ShowInReport="True">
+      <Serie MetricName="Percentage Code Coverage" MetricUnit="%" Color="#FF32CD32" ChartType="Area" ScaleExp="0" />
+    </Chart>
+    <Chart Name="Max" ShowInReport="True">
+      <Serie MetricName="Max IL Cyclomatic Complexity for Methods" MetricUnit="Paths" Color="#FFFF0000" ChartType="Line" ScaleExp="0" />
+      <Serie MetricName="Max # Lines of Code for Methods (JustMyCode)" MetricUnit="LoC" Color="#FF0000FF" ChartType="Line" ScaleExp="0" />
+      <Serie MetricName="Max # of Methods for Types" MetricUnit="Methods" Color="#FF32CD32" ChartType="Line" ScaleExp="0" />
+      <Serie MetricName="Max IL Nesting Depth for Methods" MetricUnit="Scopes" Color="#FFFFD700" ChartType="Line" ScaleExp="0" />
+    </Chart>
+    <Chart Name="Average" ShowInReport="True">
+      <Serie MetricName="Average IL Cyclomatic Complexity for Methods" MetricUnit="Paths" Color="#FFFF0000" ChartType="Line" ScaleExp="0" />
+      <Serie MetricName="Average # Lines of Code for Methods" MetricUnit="LoC" Color="#FF0000FF" ChartType="Line" ScaleExp="0" />
+      <Serie MetricName="Average # Methods for Types" MetricUnit="Methods" Color="#FF32CD32" ChartType="Line" ScaleExp="0" />
+      <Serie MetricName="Average IL Nesting Depth for Methods" MetricUnit="Scopes" Color="#FFFFD700" ChartType="Line" ScaleExp="0" />
+    </Chart>
+    <Chart Name="Third-Party Usage" ShowInReport="True">
+      <Serie MetricName="# Third-Party Types Used" MetricUnit="Types" Color="#FF0000FF" ChartType="Line" ScaleExp="0" />
+      <Serie MetricName="# Third-Party Methods Used" MetricUnit="Methods" Color="#FFFF0000" ChartType="Line" ScaleExp="0" />
+      <Serie MetricName="# Third-Party Assemblies Used" MetricUnit="Assemblies" Color="#FF646464" ChartType="Line" ScaleExp="1" />
+      <Serie MetricName="# Third-Party Namespaces Used" MetricUnit="Namespaces" Color="#FF32CD32" ChartType="Line" ScaleExp="1" />
+      <Serie MetricName="# Third-Party Fields Used" MetricUnit="Fields" Color="#FFFFD700" ChartType="Line" ScaleExp="1" />
+    </Chart>
+  </TrendMetrics>
+  <HistoricAnalysisResult PersistRecurrence="2" UseCustomDir="False" CustomDir="" />
+  <SourceFileRebasing FromPath="" ToPath="" />
+  <PathVariables />
+  <RuleFiles>
+    <RuleFile Active="True" Path=".\packages\nDepend.Common.Rules.1.0.11\RuleFile.ndrules" />
+  </RuleFiles>
+  <ProjectRules AreActive="True" />
+  <WarnFilter />
+</NDepend>

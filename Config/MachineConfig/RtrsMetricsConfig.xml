@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <DB_SOURCE>D4RTRSDB</DB_SOURCE>
+  <DB_SOURCE_WRITE>D4RTRSDB</DB_SOURCE_WRITE>
+  <DB_USER_ID>RTRSMETRICS</DB_USER_ID>
+  <DB_USER_PASSWORD>RTRSMETRICS</DB_USER_PASSWORD>
+  <USE_INTEGRATED_SECURITY>false</USE_INTEGRATED_SECURITY>
+
+  <site_id>D4</site_id>
+    
+  <chart_polling_interval_in_seconds>5</chart_polling_interval_in_seconds>
+  <chart_monitoring_window_in_seconds>100</chart_monitoring_window_in_seconds>
+  <chart_y_axis_max>1000</chart_y_axis_max>
+  <chart_y_axis_min>0</chart_y_axis_min>
+  <chart_y_axis_fixed>true</chart_y_axis_fixed>
+  
+  <data_centers>
+	  <data_center>
+		  <site_id>1</site_id>
+		  <site_location>Ashburn</site_location>
+		  <webapi_url>http://dev-wrk-32/RTRSOpDashboardWebService/api/Metrics/GetSystemMetricsData/</webapi_url>
+		  <line_color>#003874</line_color>
+		  <legend_color>#003874</legend_color>
+	  </data_center>
+	  <data_center>
+		  <site_id>2</site_id>
+		  <site_location>Richmond</site_location>
+		  <webapi_url>http://dev-wrk-32/FakeWebService/api/Metrics/GetSystemMetricsData/</webapi_url>
+		  <line_color>#2c992e</line_color>
+		  <legend_color>#2c992e</legend_color>
+	  </data_center>
+  </data_centers>
+
+  <workflow_stager_stop_wait_interval_secs>10</workflow_stager_stop_wait_interval_secs>
+  <workflow_stager_sleep_interval_millisecs>5000</workflow_stager_sleep_interval_millisecs>
+  <workflow_stager_error_wait_interval_secs>15</workflow_stager_error_wait_interval_secs>
+  <workflow_stager_fatal_error_stop_count>5</workflow_stager_fatal_error_stop_count>
+  <workflow_stager_start_time>6:00:00</workflow_stager_start_time>
+  <workflow_stager_end_time>22:00:00</workflow_stager_end_time>
+  
+  <dq_mq_qhostname>muni-svr-01</dq_mq_qhostname>
+  <dq_mq_qport>1422</dq_mq_qport>
+  <dq_mq_qchannel>RTRSREENG_SERVCON_01</dq_mq_qchannel>
+  <dq_mq_qmanager>QM_RTRS_REENG</dq_mq_qmanager>
+  <dq_mq_qname>D4_DEQUEUER_Q</dq_mq_qname>
+  <dq_mq_is_remote_q>false</dq_mq_is_remote_q>
+  
+  <responder_mq_qhostname>muni-svr-01</responder_mq_qhostname>
+  <responder_mq_qport>1422</responder_mq_qport>
+  <responder_mq_qchannel>RTRSREENG_SERVCON_01</responder_mq_qchannel>
+  <responder_mq_qmanager>QM_RTRS_REENG</responder_mq_qmanager>
+  <responder_mq_qname>D4_RESPONDER_Q</responder_mq_qname>
+  <responder_mq_is_remote_q>false</responder_mq_is_remote_q>
+  
+</Configuration>

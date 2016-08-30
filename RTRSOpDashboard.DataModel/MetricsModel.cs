@@ -10,7 +10,7 @@ namespace RTRSOpDashboard.DataModel
     {
         public string SiteId { get; set; }
         public DateTime? CompletionSecond { get; set; }
-        public short? WorkflowId { get; set; }
+        public decimal? WorkflowId { get; set; }
         public decimal? MessageCount { get; set; }
     }
 }

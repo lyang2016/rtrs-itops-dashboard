@@ -1,4 +1,4 @@
-﻿namespace WorkflowMetricsStager.Program
+﻿namespace MQMetricsStager.Program
 {
     partial class ProjectInstaller
     {
@@ -39,8 +39,8 @@
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.DisplayName = "RTRS IT Ops Workflow Metrics Service";
-            this.serviceInstaller1.ServiceName = "WorkflowMetricsService";
+            this.serviceInstaller1.DisplayName = "RTRS IT Ops Mq Metrics Service";
+            this.serviceInstaller1.ServiceName = "MqMetricsService";
             // 
             // ProjectInstaller
             // 

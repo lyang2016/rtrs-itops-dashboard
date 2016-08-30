@@ -147,6 +147,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\MetricsController.cs" />
+    <Compile Include="Domain\IMetricsDao.cs" />
     <Compile Include="Domain\MetricsDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -164,6 +165,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MQMetricsStager\MQMetricsStager.csproj">
+      <Project>{c887e523-1aee-49b4-829d-29512760bf45}</Project>
+      <Name>MQMetricsStager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RTRSOpDashboard.DataModel\RTRSOpDashboard.DataModel.csproj">
       <Project>{93260224-3568-4e23-8ea3-c493466cf8ae}</Project>
       <Name>RTRSOpDashboard.DataModel</Name>
