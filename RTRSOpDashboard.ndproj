@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <NDepend AppName="RTRSOpDashboard" Platform="DotNet">
-  <OutputDir KeepXmlFiles="False">C:\Source\rtrs-itops-dashboard\NDependOut</OutputDir>
+  <OutputDir KeepXmlFiles="False">.\NDependOut</OutputDir>
   <Assemblies>
     <Name>WorkflowMetricsStager.Program</Name>
     <Name>WorkflowMetricsStager</Name>
@@ -38,11 +38,11 @@
     <Name>Rhino.Mocks</Name>
   </FrameworkAssemblies>
   <Dirs>
-    <Dir>C:\Source\rtrs-itops-dashboard\WorkflowMetricsStager.Program\bin\Debug</Dir>
-    <Dir>C:\Source\rtrs-itops-dashboard\RTRSOpDashboard.WebService\bin</Dir>
-    <Dir>C:\Source\rtrs-itops-dashboard\MQMetricsStager\bin\Debug</Dir>
-    <Dir>C:\Source\rtrs-itops-dashboard\Dashboard\bin</Dir>
-    <Dir>C:\Source\rtrs-itops-dashboard\RTRSOpDashboardTests\bin\Debug</Dir>
+    <Dir>.\WorkflowMetricsStager.Program\bin\Debug</Dir>
+    <Dir>.\RTRSOpDashboard.WebService\bin</Dir>
+    <Dir>.\MQMetricsStager\bin\Debug</Dir>
+    <Dir>.\Dashboard\bin</Dir>
+    <Dir>.\RTRSOpDashboardTests\bin\Debug</Dir>
     <Dir>C:\Windows\Microsoft.NET\Framework\v4.0.30319</Dir>
     <Dir>C:\Windows\Microsoft.NET\Framework\v4.0.30319\WPF</Dir>
   </Dirs>
