@@ -1,4 +1,4 @@
-﻿function requestData(thisObj, currentTime, workFlowId) {
+﻿function requestData(thisObj, currentTime, workFlowId, yAxisFrom, yAxisTo, yAxisFixedFlag) {
     var to = moment(currentTime);
     var from = to.clone().subtract(pollingIntervalInSeconds, 'seconds');
 
@@ -17,8 +17,8 @@
                 var chart = thisObj;
 
                 // set fixed or auto scaled y-axis
-                if (yAxisFixed === 'true') {
-                    chart.yAxis[0].setExtremes(yAxisMin, yAxisMax);
+                if (yAxisFixedFlag === 'true') {
+                    chart.yAxis[0].setExtremes(yAxisFrom, yAxisTo);
                 }
 
                 var arr, x, y;
@@ -59,7 +59,7 @@
 
                 // call it again after polling interval in seconds
                 setTimeout(function () {
-                    requestData(chart, currentTime.add(pollingIntervalInSeconds, 'seconds'), workFlowId);
+                    requestData(chart, currentTime.add(pollingIntervalInSeconds, 'seconds'), workFlowId, yAxisFrom, yAxisTo, yAxisFixedFlag);
                 }, pollingIntervalInSeconds * 1000);
             })
             .fail(function (jqXHR, statusText, err) {
@@ -71,7 +71,7 @@
 
 
 
-MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints, workFlowId) {
+MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints, workFlowId, yAxisFrom, yAxisTo, yAxisFixedFlag) {
     this.chart = new Highcharts.Chart({
         chart: {
             type: 'spline',
@@ -80,8 +80,14 @@ MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints
             renderTo: container,
             height: 250,
             events: {
-                load: function() {
-                    requestData(this, moment('2016-07-28 11:30:00'), workFlowId);
+                load: function () {
+                    var currentTime;
+                    if (playbackEnabled === 'true') {
+                        currentTime = moment(playbackStartTime);
+                    } else {
+                        currentTime = moment(moment().format('YYYY-MM-DD HH:mm:ss'));
+                    }
+                    requestData(this, currentTime, workFlowId, yAxisFrom, yAxisTo, yAxisFixedFlag);
                 }
             }
         },

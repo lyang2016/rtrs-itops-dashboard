@@ -13,6 +13,14 @@
   <chart_y_axis_max>1000</chart_y_axis_max>
   <chart_y_axis_min>0</chart_y_axis_min>
   <chart_y_axis_fixed>true</chart_y_axis_fixed>
+  <mq_y_axis_max>1000</mq_y_axis_max>
+  <mq_y_axis_min>0</mq_y_axis_min>
+  <mq_y_axis_fixed>true</mq_y_axis_fixed>
+  <ete_y_axis_max>1000</ete_y_axis_max>
+  <ete_y_axis_min>0</ete_y_axis_min>
+  <ete_y_axis_fixed>true</ete_y_axis_fixed>
+  <playback_enabled>false</playback_enabled>
+  <playback_start_time></playback_start_time>
   
   <data_centers>
 	  <data_center>
