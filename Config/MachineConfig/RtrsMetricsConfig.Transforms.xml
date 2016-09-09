@@ -63,7 +63,7 @@
   <responder_mq_qport>#{responder_mq_qport}</responder_mq_qport>
   <responder_mq_qchannel>#{responder_mq_qchannel}</responder_mq_qchannel>
   <responder_mq_qmanager>#{responder_mq_qmanager}</responder_mq_qmanager>
-  <responder_mq_qname>#{responder_mq_qname}</responder_mq_qname>
-  <responder_mq_is_remote_q>#{responder_mq_is_remote_q}</responder_mq_is_remote_q>
+  <responder_mq_qname>#{responder_mq_xmit_qname}</responder_mq_qname>
+  <responder_mq_is_remote_q>false</responder_mq_is_remote_q>
   
 </Configuration>
