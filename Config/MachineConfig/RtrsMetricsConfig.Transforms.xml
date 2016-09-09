@@ -45,7 +45,13 @@
   <workflow_stager_start_time>#{workflow_stager_start_time}</workflow_stager_start_time>
   <workflow_stager_end_time>#{workflow_stager_end_time}</workflow_stager_end_time>
 
-
+  <mq_stager_stop_wait_interval_secs>#{mq_stager_stop_wait_interval_secs}</mq_stager_stop_wait_interval_secs>
+  <mq_stager_sleep_interval_millisecs>#{mq_stager_sleep_interval_millisecs}</mq_stager_sleep_interval_millisecs>
+  <mq_stager_error_wait_interval_secs>#{mq_stager_error_wait_interval_secs}</mq_stager_error_wait_interval_secs>
+  <mq_stager_fatal_error_stop_count>#{mq_stager_fatal_error_stop_count}</mq_stager_fatal_error_stop_count>
+  <mq_stager_start_time>#{mq_stager_start_time}</mq_stager_start_time>
+  <mq_stager_end_time>#{mq_stager_end_time}</mq_stager_end_time>  
+  
   <dq_mq_qhostname>#{dq_mq_qhostname}</dq_mq_qhostname>
   <dq_mq_qport>#{dq_mq_qport}</dq_mq_qport>
   <dq_mq_qchannel>#{dq_mq_qchannel}</dq_mq_qchannel>
