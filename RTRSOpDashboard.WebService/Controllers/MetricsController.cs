@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Dashboard.Common;
 using RTRSCommon;
 using RTRSOpDashboard.DataModel;
 using RTRSOpDashboard.WebService.Domain;
@@ -36,8 +37,8 @@ namespace RTRSOpDashboard.WebService.Controllers
             }
             catch (Exception ex)
             {
-                Loggers.ApplicationTrace.ErrorFormat("Exception from GetMetricsData - {0}", ex.Message);
-                return Content(HttpStatusCode.NoContent, metricsList);
+                WebLoggers.ApplicationTrace.ErrorFormat("Exception from GetMetricsData - {0}", ex.Message);
+                return Content(HttpStatusCode.OK, metricsList);
             }
 
             return Ok(metricsList);

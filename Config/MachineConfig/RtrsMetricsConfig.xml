@@ -7,6 +7,7 @@
   <USE_INTEGRATED_SECURITY>false</USE_INTEGRATED_SECURITY>
 
   <site_id>D4</site_id>
+  <webservice_log_file_base_directory>c:\WebsiteLogs\RTRS</webservice_log_file_base_directory>
     
   <chart_polling_interval_in_seconds>5</chart_polling_interval_in_seconds>
   <chart_monitoring_window_in_seconds>100</chart_monitoring_window_in_seconds>

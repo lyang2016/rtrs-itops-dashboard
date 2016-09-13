@@ -32,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MachineConfig", "MachineCon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MQMetricsStager.Program", "MQMetricsStager.Program\MQMetricsStager.Program.csproj", "{FBA2EEF0-A579-4BD8-8E44-422B7C92C5CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard.Common", "Dashboard.Common\Dashboard.Common.csproj", "{7CB9519B-BBC3-44B3-A4C0-FF87117127A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{FBA2EEF0-A579-4BD8-8E44-422B7C92C5CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBA2EEF0-A579-4BD8-8E44-422B7C92C5CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBA2EEF0-A579-4BD8-8E44-422B7C92C5CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CB9519B-BBC3-44B3-A4C0-FF87117127A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CB9519B-BBC3-44B3-A4C0-FF87117127A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CB9519B-BBC3-44B3-A4C0-FF87117127A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CB9519B-BBC3-44B3-A4C0-FF87117127A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

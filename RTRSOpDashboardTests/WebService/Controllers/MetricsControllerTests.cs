@@ -90,7 +90,7 @@ namespace RTRSOpDashboardTests.WebService.Controllers
 
             // Assert
             Assert.IsNotNull(contentResult);
-            Assert.AreEqual(HttpStatusCode.NoContent, contentResult.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, contentResult.StatusCode);
         }
     }
 }

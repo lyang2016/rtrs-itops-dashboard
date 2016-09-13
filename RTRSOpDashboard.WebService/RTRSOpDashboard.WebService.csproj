@@ -165,6 +165,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dashboard.Common\Dashboard.Common.csproj">
+      <Project>{7cb9519b-bbc3-44b3-a4c0-ff87117127a8}</Project>
+      <Name>Dashboard.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MQMetricsStager\MQMetricsStager.csproj">
       <Project>{c887e523-1aee-49b4-829d-29512760bf45}</Project>
       <Name>MQMetricsStager</Name>
