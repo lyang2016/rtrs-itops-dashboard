@@ -13,7 +13,7 @@ namespace MQMetricsStager.Domain
     [ExcludeFromCodeCoverage]
     public class QueueReader : IDisposable, IQueueReader
     {
-        private MqConnection _mqConnection;
+        private MqPeekConnection _mqConnection;
         private readonly MqSettings _mqSettings;
 
         public QueueReader(MqSettings mqSettings)
@@ -25,7 +25,7 @@ namespace MQMetricsStager.Domain
         {
             if (_mqConnection == null)
             {
-                _mqConnection = new MqConnection(_mqSettings);
+                _mqConnection = new MqPeekConnection(_mqSettings);
                 _mqConnection.OpenQueue();
             }
             return _mqConnection.GetCurrentDepth();

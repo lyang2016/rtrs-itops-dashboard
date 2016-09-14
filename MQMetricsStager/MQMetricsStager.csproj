@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\MQPeekConnection.cs" />
     <Compile Include="Domain\QueueReader.cs" />
     <Compile Include="Domain\StagerDao.cs" />
     <Compile Include="Domain\StagerRunner.cs" />
