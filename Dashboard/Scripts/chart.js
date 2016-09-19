@@ -51,7 +51,7 @@
                             chart = $('#responder').highcharts();
                             break;
                         case 4:
-                            chart = $('#processor').highcharts();
+                            chart = $('#rulesengine').highcharts();
                             break;
                         case 5:
                             chart = $('#parser').highcharts();
@@ -324,7 +324,7 @@
             }]
         });
 
-        $('#processor').highcharts({
+        $('#rulesengine').highcharts({
             chart: {
                 type: 'spline',
                 animation: Highcharts.svg, // don't animate in old IE
@@ -337,7 +337,7 @@
                 }
             },
             title: {
-                text: 'Processor'
+                text: 'Rules engine'
             },
             credits: {
                 enabled: false
@@ -366,7 +366,7 @@
                 enabled: false
             },
             series: [{
-                name: 'Processor',
+                name: 'Rules Engine',
                 data: []
             }]
         });

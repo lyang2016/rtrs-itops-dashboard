@@ -17,7 +17,7 @@ $(function () {
 
     var matcher = new MSRB.Chart('Matcher', 'matcher', pollingIntervalInSeconds, nonShiftPoints, 6, yAxisMin, yAxisMax, yAxisFixed);
 
-    var processor = new MSRB.Chart('Processor', 'processor', pollingIntervalInSeconds, nonShiftPoints, 4, yAxisMin, yAxisMax, yAxisFixed);
+    var rulesengine = new MSRB.Chart('Rules Engine', 'rulesengine', pollingIntervalInSeconds, nonShiftPoints, 4, yAxisMin, yAxisMax, yAxisFixed);
 
     var responder = new MSRB.Chart('Responder', 'responder', pollingIntervalInSeconds, nonShiftPoints, 3, yAxisMin, yAxisMax, yAxisFixed);
 
