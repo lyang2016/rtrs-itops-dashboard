@@ -18,8 +18,12 @@
         return getChartData(apiUrl);
     };
 
-    var getAllSitesChartData = function(url1, url2) {
-        var promises = [getSite1ChartData(url1), getSite2ChartData(url2)];
+    var getSite3ChartData = function (apiUrl) {
+        return getChartData(apiUrl);
+    };
+
+    var getAllSitesChartData = function(url1, url2, url3) {
+        var promises = [getSite1ChartData(url1), getSite2ChartData(url2), getSite3ChartData(url3)];
         return $.when.apply($, promises);
     };
 

@@ -11,9 +11,10 @@
 
     var site1_url = arrCenters[0].WebApiUrl + '?from=' + from.format('YYYY-MM-DD HH:mm:ss') + '&to=' + to.format('YYYY-MM-DD HH:mm:ss') + '&workflowId=' + workFlowId;
     var site2_url = arrCenters[1].WebApiUrl + '?from=' + from.format('YYYY-MM-DD HH:mm:ss') + '&to=' + to.format('YYYY-MM-DD HH:mm:ss') + '&workflowId=' + workFlowId;
+    var site3_url = arrCenters[2].WebApiUrl + '?from=' + from.format('YYYY-MM-DD HH:mm:ss') + '&to=' + to.format('YYYY-MM-DD HH:mm:ss') + '&workflowId=' + workFlowId;
 
-    MSRB.dataService.getAllSitesChartData(site1_url, site2_url)
-            .done(function (data1, data2) {
+    MSRB.dataService.getAllSitesChartData(site1_url, site2_url, site3_url)
+            .done(function (data1, data2, data3) {
                 var chart = thisObj;
 
                 // set fixed or auto scaled y-axis
@@ -54,7 +55,24 @@
                 }
 
                 //add the point
-                chart.series[1].addPoint([x, y], true, shift);
+                chart.series[1].addPoint([x, y], false, shift);
+
+                // series 3
+                series = chart.series[2];
+                shift = series.data.length > nonShiftPoints; // shift if the series is longer than 20
+
+                arr = data3[0];
+                if (arr.length > 0) {
+                    // Replace T with space to prevent it to be treated as UTC date string
+                    x = Date.parse(arr[0].CompletionSecond.replace('T', ' '));
+                    y = arr[0].MessageCount;
+                } else {
+                    x = Date.parse(currentTime.format('YYYY-MM-DD HH:mm:ss'));
+                    y = 0;
+                }
+
+                //add the point
+                chart.series[2].addPoint([x, y], true, shift);
 
 
                 // call it again after polling interval in seconds
@@ -71,7 +89,7 @@
 
 
 
-MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints, workFlowId, yAxisFrom, yAxisTo, yAxisFixedFlag) {
+MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints, workFlowId, yAxisFrom, yAxisTo, yAxisFixedFlag, yAxisTitleText, timeLaggingToPull, arrCenters) {
     this.chart = new Highcharts.Chart({
         chart: {
             type: 'spline',
@@ -85,7 +103,7 @@ MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints
                     if (playbackEnabled === 'true') {
                         currentTime = moment(playbackStartTime);
                     } else {
-                        currentTime = moment(moment().format('YYYY-MM-DD HH:mm:ss'));
+                        currentTime = moment(moment().add(timeLaggingToPull * -1, 'seconds').format('YYYY-MM-DD HH:mm:ss'));
                     }
                     requestData(this, currentTime, workFlowId, yAxisFrom, yAxisTo, yAxisFixedFlag);
                 }
@@ -114,7 +132,7 @@ MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints
         },
         yAxis: {
             title: {
-                text: ''
+                text: yAxisTitleText
             },
             //max: 1000,
             //min: 0,
@@ -145,12 +163,17 @@ MSRB.Chart = function (name, container, pollingIntervalInSeconds, nonShiftPoints
         series: [{
             name: name,
             data: [],
-            color: '#003874'
+            color: arrCenters[0].LineColor
         },
         {
-            name: 'Fake',
+            name: name,
             data: [],
-            color: '#2c992e'
+            color: arrCenters[1].LineColor
+        },
+        {
+            name: name,
+            data: [],
+            color: arrCenters[2].LineColor
         }]
     });
 

@@ -14,14 +14,18 @@
   <chart_y_axis_max>1000</chart_y_axis_max>
   <chart_y_axis_min>0</chart_y_axis_min>
   <chart_y_axis_fixed>true</chart_y_axis_fixed>
+  <chart_y_axis_title_text># of Trade Messages</chart_y_axis_title_text>
   <mq_y_axis_max>1000</mq_y_axis_max>
   <mq_y_axis_min>0</mq_y_axis_min>
   <mq_y_axis_fixed>true</mq_y_axis_fixed>
+  <mq_y_axis_title_text>MQ Current Depth</mq_y_axis_title_text>
   <ete_y_axis_max>1000</ete_y_axis_max>
   <ete_y_axis_min>0</ete_y_axis_min>
   <ete_y_axis_fixed>true</ete_y_axis_fixed>
+  <ete_y_axis_title_text>Response Time in Seconds</ete_y_axis_title_text>
   <playback_enabled>false</playback_enabled>
   <playback_start_time></playback_start_time>
+  <time_lagging_to_pull_in_seconds>10</time_lagging_to_pull_in_seconds>
   
   <data_centers>
 	  <data_center>
@@ -38,6 +42,13 @@
 		  <line_color>#2c992e</line_color>
 		  <legend_color>#2c992e</legend_color>
 	  </data_center>
+    <data_center>
+      <site_id>3</site_id>
+      <site_location>Pittsburg</site_location>
+      <webapi_url>http://dev-wrk-32/FakeWebService/api/Metrics/GetSystemMetricsData/</webapi_url>
+      <line_color>#ee7406</line_color>
+      <legend_color>#ee7406</legend_color>
+    </data_center>
   </data_centers>
 
   <workflow_stager_stop_wait_interval_secs>10</workflow_stager_stop_wait_interval_secs>

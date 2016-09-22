@@ -12,15 +12,18 @@
   <chart_y_axis_max>#{chart_y_axis_max}</chart_y_axis_max>
   <chart_y_axis_min>#{chart_y_axis_min}</chart_y_axis_min>
   <chart_y_axis_fixed>#{chart_y_axis_fixed}</chart_y_axis_fixed>
+  <chart_y_axis_title_text>#{chart_y_axis_title_text}</chart_y_axis_title_text>
   <mq_y_axis_max>#{mq_y_axis_max}</mq_y_axis_max>
   <mq_y_axis_min>#{mq_y_axis_min}</mq_y_axis_min>
   <mq_y_axis_fixed>#{mq_y_axis_fixed}</mq_y_axis_fixed>
+  <mq_y_axis_title_text>#{mq_y_axis_title_text}</mq_y_axis_title_text>
   <ete_y_axis_max>#{ete_y_axis_max}</ete_y_axis_max>
   <ete_y_axis_min>#{ete_y_axis_min}</ete_y_axis_min>
   <ete_y_axis_fixed>#{ete_y_axis_fixed}</ete_y_axis_fixed>
+  <ete_y_axis_title_text>#{ete_y_axis_title_text}</ete_y_axis_title_text>
   <playback_enabled>#{playback_enabled}</playback_enabled>
   <playback_start_time>#{playback_start_time}</playback_start_time>
-
+  <time_lagging_to_pull_in_seconds>#{time_lagging_to_pull_in_seconds}</time_lagging_to_pull_in_seconds>
 
   <data_centers>
     <data_center>
@@ -36,6 +39,13 @@
       <webapi_url>http://dev-wrk-32/FakeWebService/api/Metrics/GetSystemMetricsData/</webapi_url>
       <line_color>#2c992e</line_color>
       <legend_color>#2c992e</legend_color>
+    </data_center>
+    <data_center>
+      <site_id>3</site_id>
+      <site_location>Pittsburg</site_location>
+      <webapi_url>http://dev-wrk-32/FakeWebService/api/Metrics/GetSystemMetricsData/</webapi_url>
+      <line_color>#ee7406</line_color>
+      <legend_color>#ee7406</legend_color>
     </data_center>
   </data_centers>
 
