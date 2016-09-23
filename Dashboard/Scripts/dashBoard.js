@@ -25,6 +25,10 @@ $(function () {
 
     var disseminator = new MSRB.Chart('Disseminator', 'disseminator', pollingIntervalInSeconds, nonShiftPoints, 8, yAxisMin, yAxisMax, yAxisFixed, yAxisTitleText, timeLaggingToPull, arrCenters);
 
+    var rsequencer = new MSRB.Chart('Responder Sequencer', 'rsequencer', pollingIntervalInSeconds, nonShiftPoints, 7, yAxisMin, yAxisMax, yAxisFixed, yAxisTitleText, timeLaggingToPull, arrCenters);
+
+    var dsequencer = new MSRB.Chart('Disseminator Sequencer', 'dsequencer', pollingIntervalInSeconds, nonShiftPoints, 9, yAxisMin, yAxisMax, yAxisFixed, yAxisTitleText, timeLaggingToPull, arrCenters);
+
     var ete = new MSRB.Chart('End-to-End Time to Response', 'ete', pollingIntervalInSeconds, nonShiftPoints, 100, yAxisMinEte, yAxisMaxEte, yAxisFixedEte, yAxisTitleTextEte, timeLaggingToPull, arrCenters);
 
     var inbound = new MSRB.Chart('Inbound Queue', 'inbound', pollingIntervalInSeconds, nonShiftPoints, 101, yAxisMinMq, yAxisMaxMq, yAxisFixedMq, yAxisTitleTextMq, timeLaggingToPull, arrCenters);
