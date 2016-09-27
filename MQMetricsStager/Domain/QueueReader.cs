@@ -1,9 +1,13 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Diagnostics.CodeAnalysis;
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 using RTRSCommon;
 
 namespace MQMetricsStager.Domain
 {
+<<<<<<< HEAD
     public interface IQueueReader
     {
         int GetCurrentDepth();
@@ -15,6 +19,12 @@ namespace MQMetricsStager.Domain
     {
         private MqPeekConnection _mqConnection;
         private readonly MqSettings _mqSettings;
+=======
+    public class QueueReader : IDisposable
+    {
+        private readonly MqSettings _mqSettings;
+        private MqConnection _mqConnection;
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 
         public QueueReader(MqSettings mqSettings)
         {
@@ -25,7 +35,11 @@ namespace MQMetricsStager.Domain
         {
             if (_mqConnection == null)
             {
+<<<<<<< HEAD
                 _mqConnection = new MqPeekConnection(_mqSettings);
+=======
+                _mqConnection = new MqConnection(_mqSettings);
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
                 _mqConnection.OpenQueue();
             }
             return _mqConnection.GetCurrentDepth();

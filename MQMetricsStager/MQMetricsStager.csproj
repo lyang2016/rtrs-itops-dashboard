@@ -52,7 +52,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+<<<<<<< HEAD
     <Reference Include="System.Transactions" />
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,7 +63,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Domain\MQPeekConnection.cs" />
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
     <Compile Include="Domain\QueueReader.cs" />
     <Compile Include="Domain\StagerDao.cs" />
     <Compile Include="Domain\StagerRunner.cs" />

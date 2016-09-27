@@ -1,4 +1,8 @@
 ﻿
+<<<<<<< HEAD
+=======
+
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 $(function () {
 
     Highcharts.setOptions({
@@ -7,6 +11,7 @@ $(function () {
         }
     });
 
+<<<<<<< HEAD
     var arrCenters = $.parseJSON(dataCenters.replace(new RegExp('&quot;', 'g'), '"'));
 
     var dqer = new MSRB.Chart('DQer', 'dqer', pollingIntervalInSeconds, nonShiftPoints, 0, yAxisMin, yAxisMax, yAxisFixed, yAxisTitleText, timeLaggingToPull, arrCenters);
@@ -34,5 +39,22 @@ $(function () {
     var inbound = new MSRB.Chart('Inbound Queue', 'inbound', pollingIntervalInSeconds, nonShiftPoints, 101, yAxisMinMq, yAxisMaxMq, yAxisFixedMq, yAxisTitleTextMq, timeLaggingToPull, arrCenters);
 
     var outbound = new MSRB.Chart('Outbound Queue', 'outbound', pollingIntervalInSeconds, nonShiftPoints, 102, yAxisMinMq, yAxisMaxMq, yAxisFixedMq, yAxisTitleTextMq, timeLaggingToPull, arrCenters);
+=======
+    var dqer = new MSRB.Chart('DQer', 'dqer', pollingIntervalInSeconds, nonShiftPoints, 0);
+
+    var parser = new MSRB.Chart('Parser', 'parser', pollingIntervalInSeconds, nonShiftPoints, 5);
+
+    var a12 = new MSRB.Chart('A-12 Getter', 'a12', pollingIntervalInSeconds, nonShiftPoints, 1);
+
+    var csm = new MSRB.Chart('CSM Getter', 'csm', pollingIntervalInSeconds, nonShiftPoints, 2);
+
+    var matcher = new MSRB.Chart('Matcher', 'matcher', pollingIntervalInSeconds, nonShiftPoints, 6);
+
+    var processor = new MSRB.Chart('Processor', 'processor', pollingIntervalInSeconds, nonShiftPoints, 4);
+
+    var responder = new MSRB.Chart('Responder', 'responder', pollingIntervalInSeconds, nonShiftPoints, 3);
+
+    var disseminator = new MSRB.Chart('Disseminator', 'disseminator', pollingIntervalInSeconds, nonShiftPoints, 8);
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 
 });

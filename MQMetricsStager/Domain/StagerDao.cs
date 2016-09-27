@@ -1,4 +1,5 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Data;
 using Emma.Config;
 using RTRSCommon;
@@ -41,5 +42,17 @@ namespace MQMetricsStager.Domain
                 throw;
             }
         }
+=======
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MQMetricsStager.Domain
+{
+    public class StagerDao
+    {
+
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
     }
 }

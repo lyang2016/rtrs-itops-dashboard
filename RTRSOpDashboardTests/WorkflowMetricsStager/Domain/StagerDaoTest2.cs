@@ -16,7 +16,12 @@ namespace RTRSOpDashboardTests.WorkflowMetricsStager.Domain
         public void TestFixtureSetUp()
         {
             _connectionString = string.Format("Data Source={0};User Id={1};Password={2}",
+<<<<<<< HEAD
                 Configuration.Instance.Properties["DB_SOURCE_WRITE"], "rtrsapp", "rtrsapp");
+=======
+                Configuration.Instance.Properties["DB_SOURCE_WRITE"], Configuration.Instance.Properties["LOG_USER_ID"],
+                Configuration.Instance.Properties["LOG_USER_PASSWORD"]);
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
             TestHelper.ConnectionString = _connectionString;
 
             CleanUp();

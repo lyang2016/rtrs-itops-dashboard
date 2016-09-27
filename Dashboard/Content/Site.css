@@ -1,7 +1,10 @@
 ﻿body {
     padding-top: 70px;
     padding-bottom: 20px;
+<<<<<<< HEAD
         background-color: #a7a8a8;
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -46,8 +49,12 @@ input[type="checkbox"].input-validation-error {
 }
 .siteLegends li {
     float: left;
+<<<<<<< HEAD
    list-style-type: square;
     list-style-position: inside;
+=======
+    list-style: inside none square;
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
     padding: 0 10px 5px;
     width: auto;
     font-size: 40px;
@@ -64,11 +71,16 @@ input[type="checkbox"].input-validation-error {
         color: #fff;
         font-weight: bold;
     }
+<<<<<<< HEAD
 .process .col-md-2,.process .col-md-3,.process .col-md-4,.process .col-md-6 {
+=======
+.process .col-md-3 {
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 8px;
     margin: 10px;
+<<<<<<< HEAD
     background-color: #fff;
 }
 .process .col-md-2 {
@@ -83,6 +95,10 @@ input[type="checkbox"].input-validation-error {
 .process .col-md-6 {
    width: 56%;
 }
+=======
+    width: 23.8%;
+}
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 .navbar-inverse{ background-color: #444;}
 .navbar-inverse .navbar-brand {
     color: #fff;

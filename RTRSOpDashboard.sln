@@ -1,14 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
+<<<<<<< HEAD
 VisualStudioVersion = 12.0.40629.0
+=======
+VisualStudioVersion = 12.0.21005.1
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowMetricsStager.Program", "WorkflowMetricsStager.Program\WorkflowMetricsStager.Program.csproj", "{C2783A77-BCE2-4D2D-9869-7D52CA89F278}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B800E722-FDA2-49BC-B886-C6F195943C30}"
+<<<<<<< HEAD
 	ProjectSection(SolutionItems) = preProject
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowMetricsStager", "WorkflowMetricsStager\WorkflowMetricsStager.csproj", "{F8436D6C-1619-4D5A-8566-B492F951CAE7}"
 EndProject
@@ -22,6 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard", "Dashboard\Dash
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTRSOpDashboardTests", "RTRSOpDashboardTests\RTRSOpDashboardTests.csproj", "{CCD03040-9834-4700-BF92-3DEAF2DA5B95}"
 EndProject
+<<<<<<< HEAD
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{FF203179-5505-419E-B994-8DD0EE828EC8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MachineConfig", "MachineConfig", "{08D6F126-F181-4216-808A-B378CAF147CB}"
@@ -34,6 +42,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MQMetricsStager.Program", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard.Common", "Dashboard.Common\Dashboard.Common.csproj", "{7CB9519B-BBC3-44B3-A4C0-FF87117127A8}"
 EndProject
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +78,7 @@ Global
 		{CCD03040-9834-4700-BF92-3DEAF2DA5B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCD03040-9834-4700-BF92-3DEAF2DA5B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCD03040-9834-4700-BF92-3DEAF2DA5B95}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{FBA2EEF0-A579-4BD8-8E44-422B7C92C5CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FBA2EEF0-A579-4BD8-8E44-422B7C92C5CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBA2EEF0-A579-4BD8-8E44-422B7C92C5CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -76,11 +87,16 @@ Global
 		{7CB9519B-BBC3-44B3-A4C0-FF87117127A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CB9519B-BBC3-44B3-A4C0-FF87117127A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CB9519B-BBC3-44B3-A4C0-FF87117127A8}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+<<<<<<< HEAD
 	GlobalSection(NestedProjects) = preSolution
 		{08D6F126-F181-4216-808A-B378CAF147CB} = {FF203179-5505-419E-B994-8DD0EE828EC8}
 	EndGlobalSection
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 EndGlobal

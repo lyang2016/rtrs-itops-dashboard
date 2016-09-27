@@ -147,7 +147,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\MetricsController.cs" />
+<<<<<<< HEAD
     <Compile Include="Domain\IMetricsDao.cs" />
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
     <Compile Include="Domain\MetricsDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -165,6 +168,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ProjectReference Include="..\Dashboard.Common\Dashboard.Common.csproj">
       <Project>{7cb9519b-bbc3-44b3-a4c0-ff87117127a8}</Project>
       <Name>Dashboard.Common</Name>
@@ -173,6 +177,8 @@
       <Project>{c887e523-1aee-49b4-829d-29512760bf45}</Project>
       <Name>MQMetricsStager</Name>
     </ProjectReference>
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
     <ProjectReference Include="..\RTRSOpDashboard.DataModel\RTRSOpDashboard.DataModel.csproj">
       <Project>{93260224-3568-4e23-8ea3-c493466cf8ae}</Project>
       <Name>RTRSOpDashboard.DataModel</Name>
@@ -209,11 +215,14 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+<<<<<<< HEAD
   <Import Project="..\packages\OctoPack.3.4.1\tools\OctoPack.targets" Condition="Exists('..\packages\OctoPack.3.4.1\tools\OctoPack.targets')" />
   <Target Name="EnsureOctoPackImported" BeforeTargets="BeforeBuild" Condition="'$(OctoPackImported)' == ''">
     <Error Condition="!Exists('..\packages\OctoPack.3.4.1\tools\OctoPack.targets') And ('$(RunOctoPack)' != '' And $(RunOctoPack))" Text="You are trying to build with OctoPack, but the NuGet targets file that OctoPack depends on is not available on this computer. This is probably because the OctoPack package has not been committed to source control, or NuGet Package Restore is not enabled. Please enable NuGet Package Restore to download them. For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
     <Error Condition="Exists('..\packages\OctoPack.3.4.1\tools\OctoPack.targets') And ('$(RunOctoPack)' != '' And $(RunOctoPack))" Text="OctoPack cannot be run because NuGet packages were restored prior to the build running, and the targets file was unavailable when the build started. Please build the project again to include these packages in the build. You may also need to make sure that your build server does not delete packages prior to each build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -39,7 +39,11 @@
             // 
             // serviceInstaller1
             // 
+<<<<<<< HEAD
             this.serviceInstaller1.DisplayName = "RTRS IT Ops Workflow Metrics Service";
+=======
+            this.serviceInstaller1.DisplayName = "Workflow Metrics Service";
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
             this.serviceInstaller1.ServiceName = "WorkflowMetricsService";
             // 
             // ProjectInstaller

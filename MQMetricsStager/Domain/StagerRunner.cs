@@ -1,14 +1,22 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Diagnostics.CodeAnalysis;
 using System.Transactions;
 using Emma.Config;
 using RTRSCommon;
 using RTRSOpDashboard.DataModel;
+=======
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 
 namespace MQMetricsStager.Domain
 {
     public class StagerRunner
     {
+<<<<<<< HEAD
         private readonly IConfiguration _config;
         private readonly IStagerDao _dao;
         private readonly IQueueReader _inboundReader;
@@ -79,5 +87,7 @@ namespace MQMetricsStager.Domain
             }
         }
 
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
     }
 }

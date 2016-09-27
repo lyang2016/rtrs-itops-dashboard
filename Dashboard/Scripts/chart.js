@@ -51,7 +51,11 @@
                             chart = $('#responder').highcharts();
                             break;
                         case 4:
+<<<<<<< HEAD
                             chart = $('#rulesengine').highcharts();
+=======
+                            chart = $('#processor').highcharts();
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
                             break;
                         case 5:
                             chart = $('#parser').highcharts();
@@ -324,7 +328,11 @@
             }]
         });
 
+<<<<<<< HEAD
         $('#rulesengine').highcharts({
+=======
+        $('#processor').highcharts({
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
             chart: {
                 type: 'spline',
                 animation: Highcharts.svg, // don't animate in old IE
@@ -337,7 +345,11 @@
                 }
             },
             title: {
+<<<<<<< HEAD
                 text: 'Rules engine'
+=======
+                text: 'Processor'
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
             },
             credits: {
                 enabled: false
@@ -366,7 +378,11 @@
                 enabled: false
             },
             series: [{
+<<<<<<< HEAD
                 name: 'Rules Engine',
+=======
+                name: 'Processor',
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
                 data: []
             }]
         });

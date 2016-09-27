@@ -34,7 +34,11 @@ namespace WorkflowMetricsStager.Domain
                                 {
                                     SiteId = siteId,
                                     CompletionSecond = reader["completion_second"] as DateTime?,
+<<<<<<< HEAD
                                     WorkflowId = reader["workflow_id"] as decimal?,
+=======
+                                    WorkflowId = Convert.ToInt16(reader["workflow_id"] as decimal?),
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
                                     MessageCount = reader["message_count_completed"] as decimal?
                                 });
                             }
@@ -84,6 +88,7 @@ namespace WorkflowMetricsStager.Domain
                 throw;
             }
         }
+<<<<<<< HEAD
 
         public DateTime GetLastRunTime()
         {
@@ -115,5 +120,7 @@ namespace WorkflowMetricsStager.Domain
 
             return lastRunTime;
         }
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
     }
 }

@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 ﻿@using Dashboard.Domain
 @using Emma.Config
+=======
+﻿@using Emma.Config
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 
 @{
     ViewBag.Title = "IT Ops Dashboard";
 }
 <div class="row process">
+<<<<<<< HEAD
     <div id="dqer" class="col-md-2"></div>
     <div id="parser" class="col-md-2"></div>
     <div id="a12" class="col-md-2"></div>
@@ -23,6 +28,19 @@
     <div id="inbound" class="col-md-2"></div>
     <div id="outbound" class="col-md-2"></div>
 </div>
+=======
+        <div id="dqer" class="col-md-3"></div>
+        <div id="parser" class="col-md-3"></div>
+        <div id="a12" class="col-md-3"></div>
+        <div id="csm" class="col-md-3"></div>
+    </div>
+<div class="row process">
+        <div id="matcher" class="col-md-3"></div>
+        <div id="processor" class="col-md-3"></div>
+        <div id="responder" class="col-md-3"></div>
+        <div id="disseminator" class="col-md-3"></div>
+    </div>
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 
 
 @section scripts
@@ -33,20 +51,27 @@
     <script src="~/Scripts/moment.min.js"></script>
     @*<script src="~/Scripts/chart.js"></script>*@
     <script src="~/Scripts/dashBoard.js"></script>
+<<<<<<< HEAD
     <script src="~/Scripts/dataService.js"></script>
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
     <script src="~/Scripts/chartComponent.js"></script>
 }
 
 <script>
+<<<<<<< HEAD
     // define MSRB namespace
     var MSRB = MSRB || {};
 
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
     var pollingIntervalInSeconds = '@Configuration.Instance.Properties["chart_polling_interval_in_seconds", true]';
     var monitoringWindowInSeconds = '@Configuration.Instance.Properties["chart_monitoring_window_in_seconds", true]';
     var nonShiftPoints = monitoringWindowInSeconds / pollingIntervalInSeconds;
     var yAxisMax = '@Configuration.Instance.Properties["chart_y_axis_max", true]';
     var yAxisMin = '@Configuration.Instance.Properties["chart_y_axis_min", true]';
     var yAxisFixed = '@Configuration.Instance.Properties["chart_y_axis_fixed", true]';
+<<<<<<< HEAD
     var dataCenters = '@HttpUtility.HtmlDecode(ConfigReader.Instance.GetDataCenterConfigs())';
     var yAxisMaxMq = '@Configuration.Instance.Properties["mq_y_axis_max", true]';
     var yAxisMinMq = '@Configuration.Instance.Properties["mq_y_axis_min", true]';
@@ -62,4 +87,7 @@
     var yAxisTitleTextEte = '@Configuration.Instance.Properties["ete_y_axis_title_text", true]';
 
     var timeLaggingToPull = '@Configuration.Instance.Properties["time_lagging_to_pull_in_seconds", true]';
+=======
+    var chartUrl = '@Url.Action("GetMetricsData", "Home")';
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 </script>

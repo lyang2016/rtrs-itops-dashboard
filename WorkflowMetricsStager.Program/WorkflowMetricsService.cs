@@ -26,8 +26,11 @@ namespace WorkflowMetricsStager.Program
         private FatalErrorCounter _fatalErrorCounter;
         private const string ComponentName = "WorkflowMetricsStager";
         private bool _serviceErrorFlag;
+<<<<<<< HEAD
         private string _timerStartTime;
         private string _timerEndTime;
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
 
         public WorkflowMetricsService()
         {
@@ -43,6 +46,14 @@ namespace WorkflowMetricsStager.Program
                     _stopEvent.Dispose();
                     _stopEvent = null;
                 }
+<<<<<<< HEAD
+=======
+                //if (_dequeueRunner != null)
+                //{
+                //    _dequeueRunner.Dispose();
+                //    _dequeueRunner = null;
+                //}
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
             }
             base.Dispose(disposing);
         }
@@ -67,8 +78,11 @@ namespace WorkflowMetricsStager.Program
                 _timerInterval = int.Parse(_configuration.Properties["workflow_stager_sleep_interval_millisecs", true]);
                 _fatalStopCountLimit = int.Parse(_configuration.Properties["workflow_stager_fatal_error_stop_count", true]);
                 _errorWaitInterval = int.Parse(_configuration.Properties["workflow_stager_error_wait_interval_secs", true]) * 1000;
+<<<<<<< HEAD
                 _timerStartTime = _configuration.Properties["workflow_stager_start_time", true];
                 _timerEndTime = _configuration.Properties["workflow_stager_end_time", true];
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
             }
             catch (Exception ex)
             {
@@ -88,8 +102,12 @@ namespace WorkflowMetricsStager.Program
                 if (!_timer.Enabled)
                 {
                     _timer.Elapsed += OnTimedEvent;
+<<<<<<< HEAD
                     //_timer.Interval = _timerInterval;
                     _timer.Interval = GetTimerIntervalInMilliSeconds();
+=======
+                    _timer.Interval = _timerInterval;
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
                     _timer.Start();
                 }
             }
@@ -168,7 +186,10 @@ namespace WorkflowMetricsStager.Program
                     if (!_stopping)
                     {
                         _timer.Start();
+<<<<<<< HEAD
                         _timer.Interval = GetTimerIntervalInMilliSeconds();
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
                     }
                 }
             }
@@ -188,6 +209,10 @@ namespace WorkflowMetricsStager.Program
                 ShutdownServiceAfterError();
                 return;
             }
+<<<<<<< HEAD
+=======
+            //_dequeueRunner.DisposeDbConnetion();
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
             try
             {
                 Loggers.ApplicationTrace.WarnFormat("Unexpected error has occurred. Service will wait for {0} ms and then try again.", _errorWaitInterval);
@@ -214,6 +239,7 @@ namespace WorkflowMetricsStager.Program
             }
         }
 
+<<<<<<< HEAD
         private int GetTimerIntervalInMilliSeconds()
         {
             var interval = _timerInterval;
@@ -234,5 +260,7 @@ namespace WorkflowMetricsStager.Program
 
             return interval;
         }
+=======
+>>>>>>> e0e1ff74d1444cc92b0949760451e6c7a2b14f0a
     }
 }
